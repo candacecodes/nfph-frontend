@@ -1,12 +1,12 @@
 import React from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
 
-import img1 from "../../../assets/images/users/1.jpg";
-import img2 from "../../../assets/images/users/2.jpg";
-import img3 from "../../../assets/images/users/3.jpg";
-import img4 from "../../../assets/images/users/4.jpg";
-import img5 from "../../../assets/images/users/5.jpg";
-import img6 from "../../../assets/images/users/6.jpg";
+import img1 from "../../assets/images/users/1.jpg";
+import img2 from "../../assets/images/users/2.jpg";
+import img3 from "../../assets/images/users/3.jpg";
+import img4 from "../../assets/images/users/4.jpg";
+import img5 from "../../assets/images/users/5.jpg";
+import img6 from "../../assets/images/users/6.jpg";
 
 const ChatListing = () => {
   return (
