@@ -1,4 +1,4 @@
-import Starter from "../views/starter/starter.jsx";
+import Dashboard from "../provider-components/Dashboard.jsx";
 // ui components
 import Alerts from "../views/ui-components/alert.jsx";
 import Badges from "../views/ui-components/badge.jsx";
@@ -9,61 +9,61 @@ import PaginationComponent from "../views/ui-components/pagination.jsx";
 import PopoverComponent from "../views/ui-components/popover.jsx";
 import TooltipComponent from "../views/ui-components/tooltip.jsx";
 
-var ThemeRoutes = [
+var ProviderRoutes = [
   {
-    path: "/dashboard",
-    name: "Dashboard",
+    path: "/provider/dashboard",
+    name: "Provider Dashboard",
     icon: "far fa-clock",
-    component: Starter,
+    component: Dashboard,
   },
   {
-    path: "/alert",
+    path: "/provider/alert",
     name: "Alerts",
     icon: "fas fa-comment-alt",
     component: Alerts,
   },
   {
-    path: "/badge",
+    path: "/provider/badge",
     name: "Badges",
     icon: "fas fa-clone",
     component: Badges,
   },
   {
-    path: "/button",
+    path: "/provider/button",
     name: "Buttons",
     icon: "fas fa-inbox",
     component: Buttons,
   },
   {
-    path: "/card",
+    path: "/provider/card",
     name: "Cards",
     icon: "far fa-credit-card",
     component: Cards,
   },
   {
-    path: "/grid",
+    path: "/provider/grid",
     name: "Grid",
     icon: "fas fa-th",
     component: LayoutComponent,
   },
   {
-    path: "/pagination",
+    path: "/provider/pagination",
     name: "Pagination",
     icon: "fas fa-undo",
     component: PaginationComponent,
   },
   {
-    path: "/popover",
+    path: "/provider/popover",
     name: "Popover",
     icon: "fas fa-sun",
     component: PopoverComponent,
   },
   {
-    path: "/ui-components/tooltip",
+    path: "/provider/ui-components/tooltip",
     name: "Toltips",
     icon: "fas fa-tachometer-alt",
     component: TooltipComponent,
   },
-  { path: "/", pathTo: "/dashboard", name: "Dashboard", redirect: true },
+  { path: "/provider", pathTo: "/provider/dashboard", name: "Dashboard", redirect: true },
 ];
-export default ThemeRoutes;
+export default ProviderRoutes;

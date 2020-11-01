@@ -11,15 +11,15 @@ import {
   DropdownMenu,
 } from "reactstrap";
 
-import profilephoto from "../../assets/images/users/1.jpg";
+import profilephoto from "../assets/images/users/1.jpg";
 
 /*--------------------------------------------------------------------------------*/
 /* Import images which are need for the HEADER                                    */
 /*--------------------------------------------------------------------------------*/
-import logodarkicon from "../../assets/images/logo-icon.png";
-import logolighticon from "../../assets/images/logo-light-icon.png";
-import logodarktext from "../../assets/images/logo-text.png";
-import logolighttext from "../../assets/images/logo-light-text.png";
+import logodarkicon from "../assets/images/logo-icon.png";
+import logolighticon from "../assets/images/logo-light-icon.png";
+import logodarktext from "../assets/images/logo-text.png";
+import logolighttext from "../assets/images/logo-light-text.png";
 
 const Header = () => {
   /*--------------------------------------------------------------------------------*/
