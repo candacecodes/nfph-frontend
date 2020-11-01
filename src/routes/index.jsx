@@ -1,7 +1,9 @@
-import Fulllayout from '../layouts/fulllayout.jsx';
+import PatientLayout from '../layouts/PatientLayout.jsx';
+import ProviderLayout from '../layouts/ProviderLayout.jsx';
 
 var indexRoutes = [
-    { path: '/', name: 'Starter', component: Fulllayout }
+    { path: '/patient', name: 'Patient Start', component: PatientLayout },
+    { path: '/provider', name: 'Provider Start', component: ProviderLayout }
 ];
 
 export default indexRoutes;

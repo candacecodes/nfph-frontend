@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Header from '../components/header/header.jsx';
-import Sidebar from '../components/sidebar/sidebar.jsx';
-import Footer from '../components/footer/footer.jsx';
-import ThemeRoutes from '../routes/routing.jsx';
+import Header from '../provider-components/Header.jsx';
+import Sidebar from '../provider-components/Sidebar.jsx';
+import Footer from '../provider-components/Footer.jsx';
+import ProviderRoutes from '../routes/ProviderRoutes.jsx';
 
-const Fulllayout = (props) => {
+const ProviderLayout = (props) => {
     /*--------------------------------------------------------------------------------*/
     /*Change the layout settings [HEADER,SIDEBAR && DARK LAYOUT] from here            */
     /*--------------------------------------------------------------------------------*/
@@ -70,14 +70,14 @@ const Fulllayout = (props) => {
             {/*--------------------------------------------------------------------------------*/}
             {/* Sidebar                                                                        */}
             {/*--------------------------------------------------------------------------------*/}
-            <Sidebar {...props} routes={ThemeRoutes} />
+            <Sidebar {...props} routes={ProviderRoutes} />
             {/*--------------------------------------------------------------------------------*/}
             {/* Page Main-Content                                                              */}
             {/*--------------------------------------------------------------------------------*/}
             <div className="page-wrapper d-block">
                 <div className="page-content container-fluid">
                     <Switch>
-                        {ThemeRoutes.map((prop, key) => {
+                        {ProviderRoutes.map((prop, key) => {
                             if (prop.redirect) {
                                 return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
                             }
@@ -94,4 +94,4 @@ const Fulllayout = (props) => {
         </div>
     );
 }
-export default Fulllayout;
+export default ProviderLayout;

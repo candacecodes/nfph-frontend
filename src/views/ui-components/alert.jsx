@@ -171,7 +171,7 @@ const Alerts = () => {
             {/* --------------------------------------------------------------------------------*/}
             {/* Card-5*/}
             {/* --------------------------------------------------------------------------------*/}
-            <Card>
+            {/* <Card>
                 <CardTitle className="bg-light border-bottom p-3 mb-0">
                     <i className="mdi mdi-comment-processing-outline mr-2" />
             Alert with Uncontrolled [disable] Alerts
@@ -183,16 +183,16 @@ const Alerts = () => {
               </UncontrolledAlert>
                     </div>
                 </CardBody>
-            </Card>
+            </Card> */}
             {/* --------------------------------------------------------------------------------*/}
             {/* Card-6*/}
             {/* --------------------------------------------------------------------------------*/}
-            <Card>
+            {/* <Card>
                 <CardTitle className="bg-light border-bottom p-3 mb-0">
                     <i className="mdi mdi-comment-processing-outline mr-2" />
             Alerts without fade
-          </CardTitle>
-                <CardBody className="">
+          </CardTitle> */}
+                {/* <CardBody className="">
                     <div>
                         <Alert
                             color="primary"
@@ -206,8 +206,8 @@ const Alerts = () => {
                             I am an alert and I can be dismissed without animating!
               </UncontrolledAlert>
                     </div>
-                </CardBody>
-            </Card>
+                </CardBody> */}
+            {/* </Card> */}
 
             {/* --------------------------------------------------------------------------------*/}
             {/* End Inner Div*/}
