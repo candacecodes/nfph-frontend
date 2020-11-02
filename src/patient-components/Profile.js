@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-// import { useHistory } from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import { useHistory } from 'react-router-dom';
 import {
   Card,
   CardBody,
@@ -14,18 +14,69 @@ import img1 from '../assets/images/big/img1.jpg';
 
 const Profile = () => {
 
-   useEffect(() => {
-        let userInfo = fetchUser();
-        console.log(fetchUser())
-   });
+  const [user, setUser] = useState({ user: {
+    first_name: '',
+    last_name: '',
+    email_address: '',
+    diagnosis: '',
+    prescriptions: [],
+    organization_id: ''
+  } });
 
-  const fetchUser = () => {
-    fetch(`http://localhost:3000/patients/1`)
-    .then(response => {
-        return response.json()
-      })
-    .catch(err => console.log('fetchUser error:', err))
+  const [editMode, setEditMode] = useState(false);
+
+   useEffect(() => {
+      fetchUser();
+   }, []);
+
+  async function fetchUser() {
+    const res = await fetch("http://localhost:3000/patients/1");
+    res
+      .json()
+      .then(response => setUser(response))
+      .catch(error => console.log(error));
   }
+
+  const history = useHistory();
+
+  const redirect = (event) => {
+    history.push('/');
+  }
+
+  const changeToEditMode = () => {
+    setEditMode(!editMode)
+  }
+
+  const updateProfile = (event) => {
+
+    setEditMode(!editMode)
+    
+    let data = {
+      first_name: event.target.firstName.value,
+      email_address: event.target.emailAddress.value
+    }
+
+    console.log(data)
+
+    fetch("http://localhost:3000/patients/1",{
+      method:"PATCH",
+      headers:{
+          'Content-Type':'application/json'
+      },
+      body:JSON.stringify(data)
+    })
+
+  }
+
+  const deleteProfile = () => {
+    fetch(`http://localhost:3000/patients/1`, {
+      method: 'DELETE',
+    })
+    .then(response => response.json())
+    redirect()
+  }
+
+  console.log(editMode)
 
   return (
 
@@ -36,39 +87,65 @@ const Profile = () => {
             Profile
         </CardTitle>
 
-        <div className="row">
+        <div >
+          <div className="row">
 
-            <div className="col-lg-4 col-xlg-3 col-md-12">
-                <div className="white-box">
-                    <div className="user-bg">
-                        <CardImg width="100%" src={img1} />
-                            <div className="overlay-box">
-                                <div className="user-content">
-                                    <h4 className="text-white mt-2">FirstName LastName</h4>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
+              <div className="col-lg-4 col-xlg-3 col-md-12">
+                  <div className="white-box">
+                      <div className="user-bg">
+                          <CardImg width="100%" src={img1} />
+                              <div className="overlay-box">
+                                  <div className="user-content">
+                                      <h4 className="mt-2">{user.first_name}</h4>
+                                  </div>
+                              </div>
+                      </div>
+                  </div>
+              </div>
 
-            <div className="col-lg-8 col-xlg-9 col-md-12">
-                <Card>
-                <CardBody>
-                    <CardTitle>Name</CardTitle>
-                    <CardSubtitle>FirstName LastName</CardSubtitle>
-                    <CardTitle>Email</CardTitle>
-                    <CardSubtitle>patient@gmail.com</CardSubtitle>
-                    <CardTitle>Diagnosis</CardTitle>
-                    <CardSubtitle>Diagnosis Summary</CardSubtitle>
-                    <CardTitle>Prescriptions</CardTitle>
-                    <CardSubtitle>List of prescriptions</CardSubtitle>
-                    <CardTitle>Organisation</CardTitle>
-                    <CardSubtitle>Organisation</CardSubtitle>
-                    <Button>Edit Profile</Button>
-                </CardBody>
-                </Card>
-            </div>
+              <div className="col-lg-8 col-xlg-9 col-md-12">
+                {
+                  editMode === false ?
+                  <Card>
+                    <CardBody>
+                        <CardTitle>Name</CardTitle>
+                        <CardSubtitle>{user.first_name}</CardSubtitle>
+                        <CardTitle>Email</CardTitle>
+                        <CardSubtitle>{user.email_address}</CardSubtitle>
+                        <CardTitle>Diagnosis</CardTitle>
+                        <CardSubtitle>{user.diagnosis}</CardSubtitle>
+                        <CardTitle>Prescriptions</CardTitle>
+                        <CardSubtitle>none</CardSubtitle>
+                        <CardTitle>Organisation</CardTitle>
+                        <CardSubtitle>{user.organization_id}</CardSubtitle>
+                        <Button className="btn btn btn-primary btn-lg" onClick={changeToEditMode}>Edit Profile</Button>
+                        <Button className="btn btn btn-primary btn-lg" onClick={deleteProfile}>Delete Profile</Button>
+                    </CardBody>
+                  </Card>
+                  :
+                  <Card>
+                    <CardBody>
+                        {/* What do we want people to be able to edit? */}
+                        <form onSubmit={(event) => updateProfile(event)}>
+                          <CardTitle>Name</CardTitle>
+                          <input className="form-control-sm" type="text" name="firstName"/>
+                          <CardTitle>Email</CardTitle>
+                          <input className="form-control-sm" type="text" name="emailAddress"/>
+                          <CardTitle>Diagnosis</CardTitle>
+                          <CardSubtitle>{user.diagnosis}</CardSubtitle>
+                          <CardTitle>Prescriptions</CardTitle>
+                          <CardSubtitle>none</CardSubtitle>
+                          <CardTitle>Organisation</CardTitle>
+                          <CardSubtitle>{user.organization_id}</CardSubtitle>
+                          <input className="btn btn btn-primary btn-lg" type="submit" value="Save Profile"/>
+                          {/* <Button className="btn btn btn-primary btn-lg" onClick={deleteProfile}>Delete Profile</Button> */}
+                        </form>
+                    </CardBody>
+                  </Card>
+                }
+              </div>
 
+          </div>
         </div>
 
   </div>
