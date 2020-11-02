@@ -34,7 +34,7 @@ const ProgressCards = () => {
           </CardBody>
         </Card>
       </Col>
-      <Col md={6} lg={3}>
+      {/* <Col md={6} lg={3}>
         <Card>
           <CardBody>
             <div className="d-flex flex-row">
@@ -63,7 +63,7 @@ const ProgressCards = () => {
             </div>
           </CardBody>
         </Card>
-      </Col>
+      </Col> */}
     </Row>
   );
 };
