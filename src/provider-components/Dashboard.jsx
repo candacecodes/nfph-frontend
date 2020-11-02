@@ -31,9 +31,9 @@ const Dashboard = () => {
         <Col lg={8}>
           <RecentComments />
         </Col>
-        <Col sm={12} lg={4}>
+        {/* <Col sm={12} lg={4}>
           <ChatListing />
-        </Col>
+        </Col> */}
       </Row>
       <Row>
         <Col xs="12" md="4">
