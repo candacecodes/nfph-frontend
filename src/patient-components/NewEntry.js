@@ -11,7 +11,7 @@ const NewEntry = () => {
   const history = useHistory();
 
   const redirect = (event) => {
-    history.push('/patient/dashboard')
+    history.push('/patient/dashboard');
   }
 
   const [date, setDate] = useState('');
