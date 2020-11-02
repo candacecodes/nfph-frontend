@@ -12,8 +12,8 @@ const ProgressCards = () => {
                 <i className="ti-wallet"></i>
               </div>
               <div className="ml-3 align-self-center">
-                <h3 className="mb-0">$18090</h3>
-                <span className="text-muted">Income</span>
+                <h3 className="mb-0">Provider Name</h3>
+                <span className="text-muted">Specialty</span>
               </div>
             </div>
           </CardBody>

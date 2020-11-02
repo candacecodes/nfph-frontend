@@ -28,16 +28,6 @@ const Dashboard = () => {
       <h1>Provider Dashboard</h1>
       <ProgressCards />
       <Row>
-        <Col lg={12}>
-          <ProductYearlySales />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={12}>
-          <RecentSales />
-        </Col>
-      </Row>
-      <Row>
         <Col lg={8}>
           <RecentComments />
         </Col>

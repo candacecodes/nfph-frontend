@@ -9,7 +9,7 @@ const RecentComments = () => {
   return (
     <Card>
       <CardBody className="border-bottom">
-        <CardTitle className="text-uppercase mb-0">Recent Commnets</CardTitle>
+        <CardTitle className="text-uppercase mb-0">Incoming Patient Comments</CardTitle>
       </CardBody>
       <CardBody className="p-0">
         <div className="comment-widgets scrollable">
