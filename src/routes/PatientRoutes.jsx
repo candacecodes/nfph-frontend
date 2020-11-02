@@ -1,5 +1,6 @@
 import Dashboard from "../patient-components/Dashboard.jsx";
 import NewEntry from "../patient-components/NewEntry.js";
+
 // ui components
 import Alerts from "../views/ui-components/alert.jsx";
 import Badges from "../views/ui-components/badge.jsx";
