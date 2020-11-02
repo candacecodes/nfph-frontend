@@ -1,4 +1,7 @@
 import Dashboard from "../patient-components/Dashboard.jsx";
+import NewEntry from "../patient-components/NewEntry.js";
+import Profile from "../patient-components/Profile.js";
+
 // ui components
 import Alerts from "../views/ui-components/alert.jsx";
 import Badges from "../views/ui-components/badge.jsx";
@@ -15,6 +18,18 @@ var PatientRoutes = [
     name: "Patient Dashboard",
     icon: "far fa-clock",
     component: Dashboard,
+  },
+  {
+    path: "/patient/newentry",
+    name: "New Entry",
+    icon: "fas fa-comment-alt",
+    component: NewEntry,
+  },
+  {
+    path: "/patient/profile",
+    name: "Profile",
+    icon: "fas fa-clone",
+    component: Profile,
   },
   {
     path: "/patient/alert",
