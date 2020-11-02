@@ -3,21 +3,21 @@ import { useHistory } from 'react-router-dom';
 import {
   Card,
   CardImg,
-  CardText,
+  // CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
+  // CardSubtitle,
   Button,
   Row,
   Col,
 } from "reactstrap";
-import {
-  ProductYearlySales,
-  RecentSales,
-  ChatListing,
-  ProgressCards,
-  RecentComments,
-} from "./dashboard-components";
+// import {
+//   ProductYearlySales,
+//   RecentSales,
+//   ChatListing,
+//   ProgressCards,
+//   RecentComments,
+// } from "./dashboard-components";
 
 import img1 from "../assets/images/big/img1.jpg";
 import img2 from "../assets/images/big/img2.jpg";
@@ -101,7 +101,7 @@ const Dashboard = () => {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </CardText> */}
-              <Button>View Profile</Button>
+              <Button name="profile" onClick={(event) => redirect(event)}>View Profile</Button>
             </CardBody>
           </Card>
         </Col>
