@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
 # Neurofibromatosis Personalized Health: NF symptom tracker app with audio test 
-=======
-# Neurofibromatosis Personalized Health: NF symptom tracker app 
->>>>>>> 19ab090a8f15b1af73f0d37ee09fd531fc3106fa
+
 
 
 # Getting Started with Create React App
