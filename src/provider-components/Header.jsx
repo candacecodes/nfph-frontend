@@ -82,10 +82,10 @@ const Header = () => {
               </DropdownToggle>
               <DropdownMenu right className="user-dd">
                 <DropdownItem>
-                  <i className="ti-user mr-1 ml-1" /> My Account
+                  <i className="ti-user mr-1 ml-1" /> My Profile
                 </DropdownItem>
                 <DropdownItem>
-                  <i className="ti-wallet mr-1 ml-1" /> My Balance
+                  <i className="ti-wallet mr-1 ml-1" /> Patients 
                 </DropdownItem>
                 <DropdownItem>
                   <i className="ti-email mr-1 ml-1" /> Inbox

@@ -12,8 +12,8 @@ const ProgressCards = () => {
                 <i className="ti-wallet"></i>
               </div>
               <div className="ml-3 align-self-center">
-                <h3 className="mb-0">$18090</h3>
-                <span className="text-muted">Income</span>
+                <h3 className="mb-0">Provider Name</h3>
+                <span className="text-muted">Specialty</span>
               </div>
             </div>
           </CardBody>
@@ -34,7 +34,7 @@ const ProgressCards = () => {
           </CardBody>
         </Card>
       </Col>
-      <Col md={6} lg={3}>
+      {/* <Col md={6} lg={3}>
         <Card>
           <CardBody>
             <div className="d-flex flex-row">
@@ -63,7 +63,7 @@ const ProgressCards = () => {
             </div>
           </CardBody>
         </Card>
-      </Col>
+      </Col> */}
     </Row>
   );
 };
