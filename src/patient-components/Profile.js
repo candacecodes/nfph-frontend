@@ -47,7 +47,10 @@ const Profile = () => {
     setEditMode(!editMode)
   }
 
+  // To get this to work, I commented out the authorized before_action and the validations in the model
   const updateProfile = (event) => {
+
+    event.preventDefault();
 
     setEditMode(!editMode)
     
@@ -56,8 +59,6 @@ const Profile = () => {
       email_address: event.target.emailAddress.value
     }
 
-    console.log(data)
-
     fetch("http://localhost:3000/patients/1",{
       method:"PATCH",
       headers:{
@@ -65,9 +66,12 @@ const Profile = () => {
       },
       body:JSON.stringify(data)
     })
+    .then(response => response.json())
+    .then(fetchUser())
 
   }
 
+  // Doesn't work yet because of foreign key constraints
   const deleteProfile = () => {
     fetch(`http://localhost:3000/patients/1`, {
       method: 'DELETE',
@@ -75,8 +79,6 @@ const Profile = () => {
     .then(response => response.json())
     redirect()
   }
-
-  console.log(editMode)
 
   return (
 
@@ -138,7 +140,7 @@ const Profile = () => {
                           <CardTitle>Organisation</CardTitle>
                           <CardSubtitle>{user.organization_id}</CardSubtitle>
                           <input className="btn btn btn-primary btn-lg" type="submit" value="Save Profile"/>
-                          {/* <Button className="btn btn btn-primary btn-lg" onClick={deleteProfile}>Delete Profile</Button> */}
+                          {/* <Button className="btn btn btn-primary btn-lg" type="button" onClick={deleteProfile}>Delete Profile</Button> */}
                         </form>
                     </CardBody>
                   </Card>
