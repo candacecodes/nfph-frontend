@@ -24,7 +24,7 @@ const ProviderAlerts = () => {
             {/* --------------------------------------------------------------------------------*/}
             {/* Card-1*/}
             {/* --------------------------------------------------------------------------------*/}
-            <Card>
+            {/* <Card>
                 <CardTitle className="bg-light border-bottom p-3 mb-0">
                     <i className="mdi mdi-comment-processing-outline mr-2"> </i>
         Provider Alerts Test
@@ -51,7 +51,7 @@ const ProviderAlerts = () => {
                         <Alert color="dark">Patient Name </Alert>
                     </div>
                 </CardBody>
-            </Card>
+            </Card> */}
             {/* --------------------------------------------------------------------------------*/}
             {/* Card-2*/}
             {/* --------------------------------------------------------------------------------*/}
