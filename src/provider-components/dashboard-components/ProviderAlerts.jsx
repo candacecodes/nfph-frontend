@@ -121,13 +121,36 @@ const ProviderAlerts = () => {
                     </div>
                 </CardBody>
             </Card>
+
+
+            <Card>
+                <CardTitle className="bg-light border-bottom p-3 mb-0">
+                    <i className="mdi mdi-comment-processing-outline mr-2" />
+Notes Regarding Patient 
+          </CardTitle>
+                <CardBody className="">
+                    <div>
+                        <Alert
+                            color="info"
+                            isOpen={visible}
+                            toggle={onDismiss.bind(null)}
+                        >
+To do which can be dismissed. 
+              </Alert>
+                    </div>
+                </CardBody>
+            </Card>
+
+
+            
             {/* --------------------------------------------------------------------------------*/}
             {/* Card-3*/}
             {/* --------------------------------------------------------------------------------*/}
             <Card>
                 <CardTitle className="bg-light border-bottom p-3 mb-0">
                     <i className="mdi mdi-comment-processing-outline mr-2" />
-            Alert with Additional content
+                    
+Other Notes 
           </CardTitle>
                 <CardBody className="">
                     <div>
@@ -151,23 +174,9 @@ const ProviderAlerts = () => {
             {/* --------------------------------------------------------------------------------*/}
             {/* Card-4*/}
             {/* --------------------------------------------------------------------------------*/}
-            <Card>
-                <CardTitle className="bg-light border-bottom p-3 mb-0">
-                    <i className="mdi mdi-comment-processing-outline mr-2" />
-            Alert with Dissmissing
-          </CardTitle>
-                <CardBody className="">
-                    <div>
-                        <Alert
-                            color="info"
-                            isOpen={visible}
-                            toggle={onDismiss.bind(null)}
-                        >
-                            I am an alert and I can be dismissed!
-              </Alert>
-                    </div>
-                </CardBody>
-            </Card>
+
+
+
             {/* --------------------------------------------------------------------------------*/}
             {/* Card-5*/}
             {/* --------------------------------------------------------------------------------*/}
