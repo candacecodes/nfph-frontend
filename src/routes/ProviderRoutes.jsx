@@ -18,8 +18,8 @@ var ProviderRoutes = [
     component: Dashboard,
   },
   {
-    path: "/provider/alert",
-    name: "Provider Alerts",
+    path: "/provider/patients",
+    name: "Patient Profile",
     icon: "fas fa-comment-alt",
     component: ProviderAlerts,
   },
