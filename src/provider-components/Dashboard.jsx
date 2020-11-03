@@ -28,29 +28,19 @@ const Dashboard = () => {
       <h1>Provider Dashboard</h1>
       <ProgressCards />
       <Row>
-        <Col lg={12}>
-          <ProductYearlySales />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={12}>
-          <RecentSales />
-        </Col>
-      </Row>
-      <Row>
         <Col lg={8}>
           <RecentComments />
         </Col>
-        <Col sm={12} lg={4}>
+        {/* <Col sm={12} lg={4}>
           <ChatListing />
-        </Col>
+        </Col> */}
       </Row>
       <Row>
-        <Col xs="12" md="4">
+        {/* <Col xs="12" md="4"> */}
           {/*--------------------------------------------------------------------------------*/}
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
-          <Card>
+          {/* <Card>
             <CardImg top width="100%" src={img1} />
             <CardBody>
               <CardTitle>Card title</CardTitle>
@@ -61,13 +51,13 @@ const Dashboard = () => {
               </CardText>
               <Button>Button</Button>
             </CardBody>
-          </Card>
-        </Col>
-        <Col xs="12" md="4">
+          </Card> */}
+        {/* </Col> */}
+        {/* <Col xs="12" md="4"> */}
           {/*--------------------------------------------------------------------------------*/}
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
-          <Card>
+          {/* <Card>
             <CardImg top width="100%" src={img2} />
             <CardBody>
               <CardTitle>Card title</CardTitle>
@@ -78,13 +68,13 @@ const Dashboard = () => {
               </CardText>
               <Button>Button</Button>
             </CardBody>
-          </Card>
-        </Col>
-        <Col xs="12" md="4">
+          </Card> */}
+        {/* </Col> */}
+        {/* <Col xs="12" md="4"> */}
           {/*--------------------------------------------------------------------------------*/}
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
-          <Card>
+          {/* <Card>
             <CardImg top width="100%" src={img3} />
             <CardBody>
               <CardTitle>Card title</CardTitle>
@@ -96,7 +86,7 @@ const Dashboard = () => {
               <Button>Button</Button>
             </CardBody>
           </Card>
-        </Col>
+        </Col> */}
       </Row>
     </div>
   );

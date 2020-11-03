@@ -9,7 +9,7 @@ const RecentComments = () => {
   return (
     <Card>
       <CardBody className="border-bottom">
-        <CardTitle className="text-uppercase mb-0">Recent Commnets</CardTitle>
+        <CardTitle className="text-uppercase mb-0">Patient Updates</CardTitle>
       </CardBody>
       <CardBody className="p-0">
         <div className="comment-widgets scrollable">
@@ -28,14 +28,14 @@ const RecentComments = () => {
               <span className="text-muted mr-2 font-12">
                 10:20 AM 20 may 2016
               </span>
-              <span className="badge badge-info badge-rounded text-uppercase font-medium">
-                Pending
+              <span className="badge badge-success badge-rounded text-uppercase font-medium text-white">
+                View More 
               </span>
               <span className="mb-2 d-block font-14 text-muted font-light mt-3">
                 Donec ac condimentum massa. Etiam pellentesque pretium lacus.
                 Phasellus ultricies dictum suscipit. Aenean commodo
               </span>
-              <div className="mt-3">
+              {/* <div className="mt-3">
                 <a
                   href="javacript:void(0)"
                   className="btn btn btn-rounded btn-outline-success mr-2 btn-sm"
@@ -48,7 +48,7 @@ const RecentComments = () => {
                 >
                   <i className="ti-close mr-1"></i> Reject
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
           {/* Comment Row */}
@@ -67,7 +67,7 @@ const RecentComments = () => {
                 10:20 AM 20 may 2016
               </span>
               <span className="badge badge-success badge-rounded text-uppercase font-medium text-white">
-                Approved
+                View More 
               </span>
               <span className="mb-2 d-block font-14 text-muted font-light mt-3">
                 Donec ac condimentum massa. Etiam pellentesque pretium lacus.
@@ -90,8 +90,8 @@ const RecentComments = () => {
               <span className="text-muted mr-2 font-12">
                 10:20 AM 20 may 2016
               </span>
-              <span className="badge badge-danger badge-rounded text-uppercase font-medium text-white">
-                Rejected
+              <span className="badge badge-success badge-rounded text-uppercase font-medium text-white">
+                View More 
               </span>
               <span className="mb-2 d-block font-14 text-muted font-light mt-3">
                 Donec ac condimentum massa. Etiam pellentesque pretium lacus.
