@@ -67,6 +67,7 @@ const ProviderAlerts = () => {
                 <a href="/" className="alert-link">
                                 Patient Entry 1 
                 </a>
+                <button>Leave Comment</button>
                 {/* . Give it a click if you like. */}
               </Alert>
                         <Alert color="secondary">
