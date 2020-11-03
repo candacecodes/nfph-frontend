@@ -1,19 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Card,
-    CardImg,
-    CardImgOverlay,
     CardText,
     CardBody,
     CardTitle,
-    CardSubtitle,
-    CardColumns,
-    CardGroup,
-    CardDeck,
-    CardLink,
     CardHeader,
-    CardFooter,
-    Collapse,
     Button,
     Row,
     Col,
@@ -24,12 +15,10 @@ import {
     UncontrolledCollapse
 } from 'reactstrap';
 
-import img4 from '../assets/images/big/img4.jpg';
-
 const ViewEntries = () => {
   return (
     <div>
-      <h5 className="mb-3">All Entries</h5>
+      <h4 className="mb-3">All Entries</h4>
       <Row>
         <Col>
           <Card outline color="danger" className="border">
@@ -74,7 +63,8 @@ const ViewEntries = () => {
               <CardText>
                 - Card can be outlined, depending on severity?<br></br>
                 - If 0 comments, toggle view comment button to Add comment?<br></br>
-                - 1 comment vs 2 comments
+                - 1 comment vs 2 comments<br></br>
+                - images displayed aligned right with submitted pics
               </CardText>
               <CardText>
                 <small className="text-muted">0 comments</small>

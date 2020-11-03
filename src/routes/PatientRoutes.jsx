@@ -2,6 +2,7 @@ import Dashboard from "../patient-components/Dashboard.jsx";
 import NewEntry from "../patient-components/NewEntry.js";
 import Profile from "../patient-components/Profile.js";
 import ViewEntries from "../patient-components/ViewEntries.jsx";
+import Providers from "../patient-components/Providers.jsx";
 
 // ui components
 import Alerts from "../views/ui-components/alert.jsx";
@@ -17,7 +18,7 @@ var PatientRoutes = [
   {
     path: "/patient/dashboard",
     name: "Patient Dashboard",
-    icon: "far fa-clock",
+    icon: "fas fa-address-card",
     component: Dashboard,
   },
   {
@@ -29,13 +30,19 @@ var PatientRoutes = [
   {
     path: "/patient/allentries",
     name: "View All Entries",
-    icon: "fas fa-comment-alt",
+    icon: "fas fa-clipboard-list",
     component: ViewEntries,
+  },
+  {
+    path: "/patient/providers",
+    name: "Providers",
+    icon: "fas fa-hospital-alt",
+    component: Providers,
   },
   {
     path: "/patient/profile",
     name: "Profile",
-    icon: "fas fa-clone",
+    icon: " fas fa-user",
     component: Profile,
   },
   {
