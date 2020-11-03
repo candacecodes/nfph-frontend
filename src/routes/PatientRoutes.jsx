@@ -1,6 +1,7 @@
 import Dashboard from "../patient-components/Dashboard.jsx";
 import NewEntry from "../patient-components/NewEntry.js";
 import Profile from "../patient-components/Profile.js";
+import ViewEntries from "../patient-components/ViewEntries.jsx";
 
 // ui components
 import Alerts from "../views/ui-components/alert.jsx";
@@ -24,6 +25,12 @@ var PatientRoutes = [
     name: "New Entry",
     icon: "fas fa-comment-alt",
     component: NewEntry,
+  },
+  {
+    path: "/patient/allentries",
+    name: "View All Entries",
+    icon: "fas fa-comment-alt",
+    component: ViewEntries,
   },
   {
     path: "/patient/profile",
