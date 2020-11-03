@@ -36,11 +36,11 @@ const Dashboard = () => {
         </Col> */}
       </Row>
       <Row>
-        <Col xs="12" md="4">
+        {/* <Col xs="12" md="4"> */}
           {/*--------------------------------------------------------------------------------*/}
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
-          <Card>
+          {/* <Card>
             <CardImg top width="100%" src={img1} />
             <CardBody>
               <CardTitle>Card title</CardTitle>
@@ -51,13 +51,13 @@ const Dashboard = () => {
               </CardText>
               <Button>Button</Button>
             </CardBody>
-          </Card>
-        </Col>
-        <Col xs="12" md="4">
+          </Card> */}
+        {/* </Col> */}
+        {/* <Col xs="12" md="4"> */}
           {/*--------------------------------------------------------------------------------*/}
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
-          <Card>
+          {/* <Card>
             <CardImg top width="100%" src={img2} />
             <CardBody>
               <CardTitle>Card title</CardTitle>
@@ -68,13 +68,13 @@ const Dashboard = () => {
               </CardText>
               <Button>Button</Button>
             </CardBody>
-          </Card>
-        </Col>
-        <Col xs="12" md="4">
+          </Card> */}
+        {/* </Col> */}
+        {/* <Col xs="12" md="4"> */}
           {/*--------------------------------------------------------------------------------*/}
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
-          <Card>
+          {/* <Card>
             <CardImg top width="100%" src={img3} />
             <CardBody>
               <CardTitle>Card title</CardTitle>
@@ -86,7 +86,7 @@ const Dashboard = () => {
               <Button>Button</Button>
             </CardBody>
           </Card>
-        </Col>
+        </Col> */}
       </Row>
     </div>
   );
