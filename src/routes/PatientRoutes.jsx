@@ -1,6 +1,6 @@
 import Dashboard from "../patient-components/Dashboard.jsx";
-import NewEntry from "../patient-components/NewEntry.js";
-import Profile from "../patient-components/Profile.js";
+import NewEntry from "../patient-components/NewEntry.jsx";
+import Profile from "../patient-components/Profile.jsx";
 import ViewEntries from "../patient-components/ViewEntries.jsx";
 import Providers from "../patient-components/Providers.jsx";
 

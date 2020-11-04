@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
     Card,
     CardText,
@@ -16,6 +17,13 @@ import {
 } from 'reactstrap';
 
 const ViewEntries = () => {
+
+  const history = useHistory();
+
+  const redirect = (event) => {
+    history.push('/patient/newentry');
+  }
+
   return (
     <div>
       <h4 className="mb-3">All Entries</h4>
@@ -30,6 +38,7 @@ const ViewEntries = () => {
                 <small className="text-muted">3 comments</small>
               </CardText>
               <Button id="changeThis1">View Comments</Button>
+              <Button onClick={(event => redirect(event))}>Edit Entry</Button>
               <UncontrolledCollapse toggler="#changeThis1">
                 <Card>
                   <CardBody>
@@ -70,6 +79,7 @@ const ViewEntries = () => {
                 <small className="text-muted">0 comments</small>
               </CardText>
               <Button id="changeThis2">View Comments</Button>
+              <Button onClick={(event => redirect(event))}>Edit Entry</Button>
               <UncontrolledCollapse toggler="#changeThis2">
                 <Form>
                   <FormGroup>
@@ -93,6 +103,7 @@ const ViewEntries = () => {
                 <small className="text-muted">1 comment</small>
               </CardText>
               <Button id="changeThis3">View Comments</Button>
+              <Button onClick={(event => redirect(event))}>Edit Entry</Button>
               <UncontrolledCollapse toggler="#changeThis3">
                 <Card>
                   <CardBody>
