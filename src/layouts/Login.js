@@ -1,7 +1,16 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import '../assets/scss/login-signup.css'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { fetchAllOrganizations } from '../actions/organizationActions';
 
 const Login = () => {
+  // redux hooks
+  const state = useSelector(state => state, shallowEqual)
+  const dispatch = useDispatch()
+
+  useEffect(()=> {
+    dispatch(fetchAllOrganizations())
+  }, [])
 
   // handles slide feature
   const [providerPage, setProviderPage] = useState(false)
@@ -19,6 +28,11 @@ const Login = () => {
   const [signUpPassword, setSignUpPassword] = useState('')
   const [npiNumber, setNPINumber] = useState('')
 
+  const renderOrgDropDown = () => {
+    return state.organizations.map(org => {
+      return <option value={org.id}>{org.name}</option>
+    })
+  }
 
   const renderPatientSignUp = () => {
     return (
@@ -27,7 +41,10 @@ const Login = () => {
             <input className='login-signup-input' type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)}/>
             <input className='login-signup-input' type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)}/>
             <input className='login-signup-input' type="email" placeholder="Email" onChange={(e) => setSignUpEmail(e.target.value)}/>
-            <input className='login-signup-input' type="text" placeholder="Organization" onChange={(e) => setOrganization(e.target.value)}/>
+            <select className='login-signup-input' type="select" placeholder="Organization" onChange={(e) => setOrganization(e.target.value)} defaultValue='n/a'>
+              <option value='n/a' disabled>Organization</option>
+              {renderOrgDropDown()}
+            </select>
             <input className='login-signup-input' type="password" placeholder="Password" onChange={(e) => setSignUpPassword(e.target.value)}/><br/>
             <button className='login-signin-button'>Sign Up</button>
       </form>
@@ -41,7 +58,10 @@ const Login = () => {
         <input className='login-signup-input' type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)}/>
             <input className='login-signup-input' type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)}/>
             <input className='login-signup-input' type="email" placeholder="Email" onChange={(e) => setSignUpEmail(e.target.value)}/>
-            <input className='login-signup-input' type="text" placeholder="Organization" onChange={(e) => setOrganization(e.target.value)}/>
+            <select className='login-signup-input' type="select" placeholder="Organization" onChange={(e) => setOrganization(e.target.value)} defaultValue='n/a'>
+              <option value='n/a' disabled>Organization</option>
+              {renderOrgDropDown()}
+            </select>
             <input className='login-signup-input' type="password" placeholder="Password" onChange={(e) => setSignUpPassword(e.target.value)}/>
             <input className='login-signup-input' type="number" placeholder="NPI Number" onChange={(e) => setNPINumber(e.target.value)}/><br/>
             <button className='login-signin-button'>Sign Up</button>
