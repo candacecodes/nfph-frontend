@@ -4,7 +4,8 @@ import {
     // UncontrolledAlert,
     Card,
     CardBody,
-    CardTitle
+    CardTitle,
+    Button
 } from 'reactstrap';
 
 const ProviderAlerts = () => {
@@ -25,11 +26,10 @@ const ProviderAlerts = () => {
                 <CardBody className="">
                     <div>
                         <Alert color="primary">
-                            {/* This is a primary alert with */}
+                        <b>Patient Entry 1 </b>
                 <a href="/" className="alert-link">
-                                Patient Entry 1 
                 </a><br></br><br></br>
-                <button className="btn" outline color="info" size="sm">Leave Comment</button>
+                <Button className="btn" outline color="info" size="sm">Leave Comment</Button>
                 {/* . Give it a click if you like. */}
               </Alert>
                         <Alert color="secondary">
