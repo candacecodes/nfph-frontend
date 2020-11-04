@@ -5,7 +5,13 @@ import {
     Card,
     CardBody,
     CardTitle,
-    Button
+    Button,
+    UncontrolledCollapse,
+    CardText,
+    Form,
+    FormGroup,
+    Label,
+    Input
 } from 'reactstrap';
 
 const ProviderAlerts = () => {
@@ -26,10 +32,27 @@ const ProviderAlerts = () => {
                 <CardBody className="">
                     <div>
                         <Alert color="primary">
-                        <b>Patient Entry 1 </b>
+                        <b>Patient Entry 1: Date1 </b>
                 <a href="/" className="alert-link">
                 </a><br></br><br></br>
-                <Button className="btn" outline color="info" size="sm">Leave Comment</Button>
+                <Button id="changeThis1">View Entry Details</Button><br/><br/>
+              <UncontrolledCollapse toggler="#changeThis1">
+                <Card>
+                  <CardBody>
+                    <CardTitle>September 20, 2020</CardTitle>
+                    <CardText>Mole start itching today</CardText>
+                  </CardBody>
+                </Card>
+                <Form>
+                  <FormGroup>
+                    <Label for="exampleText">Add Comment</Label>
+                    <Input type="textarea" name="text" id="exampleText" />
+                    <br></br>
+                    <Button className="btn" outline color="info" size="sm">Submit</Button>
+                  </FormGroup>
+                </Form>
+              </UncontrolledCollapse>
+
                 {/* . Give it a click if you like. */}
               </Alert>
                         <Alert color="secondary">
