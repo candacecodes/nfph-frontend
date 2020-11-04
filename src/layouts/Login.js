@@ -77,9 +77,6 @@ const Login = () => {
 				<br />
 				<button className="login-signin-button">Sign Up</button>
 			</form>
-
-			// attach hook to onChange for sign up entry values names, email, organization, pw, etc.
-			// put onSubmit tag on the form
 		);
 	};
 
