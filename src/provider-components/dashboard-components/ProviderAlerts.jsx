@@ -17,44 +17,6 @@ const ProviderAlerts = () => {
 
     return (
         <div>
-            {/* --------------------------------------------------------------------------------*/}
-            {/* Start Inner Div*/}
-            {/* --------------------------------------------------------------------------------*/}
-
-            {/* --------------------------------------------------------------------------------*/}
-            {/* Card-1*/}
-            {/* --------------------------------------------------------------------------------*/}
-            {/* <Card>
-                <CardTitle className="bg-light border-bottom p-3 mb-0">
-                    <i className="mdi mdi-comment-processing-outline mr-2"> </i>
-        Provider Alerts Test
-          </CardTitle>
-                <CardBody className="">
-                    <div className="mt-3">
-                        <Alert color="primary">
-                            This is a primary alert— check it out!
-              </Alert>
-                        <Alert color="secondary">
-                            This is a secondary alert— check it out!
-              </Alert>
-                        <Alert color="success">
-                            This is a success alert— check it out!
-              </Alert>
-                        <Alert color="danger">
-                            This is a danger alert— check it out!
-              </Alert>
-                        <Alert color="warning">
-                            This is a warning alert— check it out!
-              </Alert>
-                        <Alert color="info">This is a info alert— check it out!</Alert>
-                        <Alert color="light">This is a light alert— check it out!</Alert>
-                        <Alert color="dark">Patient Name </Alert>
-                    </div>
-                </CardBody>
-            </Card> */}
-            {/* --------------------------------------------------------------------------------*/}
-            {/* Card-2*/}
-            {/* --------------------------------------------------------------------------------*/}
             <Card>
                 <CardTitle className="bg-light border-bottom p-3 mb-0">
                     <i className="mdi mdi-comment-processing-outline mr-2" />
@@ -66,8 +28,8 @@ const ProviderAlerts = () => {
                             {/* This is a primary alert with */}
                 <a href="/" className="alert-link">
                                 Patient Entry 1 
-                </a>
-                <button>Leave Comment</button>
+                </a><br></br><br></br>
+                <button className="btn" outline color="info" size="sm">Leave Comment</button>
                 {/* . Give it a click if you like. */}
               </Alert>
                         <Alert color="secondary">
