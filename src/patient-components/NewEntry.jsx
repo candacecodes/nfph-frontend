@@ -6,6 +6,9 @@ import {
   CardTitle
 } from 'reactstrap';
 
+// Change header to say new entry or update entry based on what the user is doing
+// Need to fetch the entry details using the id which will be passed from the view all entries page
+
 const NewEntry = () => {
   
   const history = useHistory();
