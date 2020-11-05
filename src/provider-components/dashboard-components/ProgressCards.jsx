@@ -1,11 +1,10 @@
 import React from "react";
-import { Card, CardBody, Row, Col, Button } from "reactstrap";
+import { Card, CardBody, Row, Col } from "reactstrap";
 
 const ProgressCards = () => {
   return (
     <Row>
-      {/* <Col md={6} lg={3}> */}
-      <Col>
+      <Col md={6} lg={3}>
         <Card>
           <CardBody>
             <div className="d-flex flex-row">
@@ -20,8 +19,7 @@ const ProgressCards = () => {
           </CardBody>
         </Card>
       </Col>
-      {/* <Col md={6} lg={3}> */}
-      <Col>
+      <Col md={6} lg={3}>
         <Card>
           <CardBody>
             <div className="d-flex flex-row">
@@ -29,10 +27,8 @@ const ProgressCards = () => {
                 <i className="ti-user"></i>
               </div>
               <div className="ml-3 align-self-center">
-                {/* <h3 className="mb-0">Search Patient</h3> */}
-                <Button className="btn" color="info">
-                                   Search for Patient
-                  </Button>
+                <h3 className="mb-0">Search Patient</h3>
+                {/* <span className="text-muted">Users</span> */}
               </div>
             </div>
           </CardBody>

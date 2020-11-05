@@ -9,7 +9,7 @@ const RecentComments = () => {
   return (
     <Card>
       <CardBody className="border-bottom">
-        <CardTitle className="text-uppercase mb-0">My Patients</CardTitle>
+        <CardTitle className="text-uppercase mb-0">Patient Updates</CardTitle>
       </CardBody>
       <CardBody className="p-0">
         <div className="comment-widgets scrollable">
@@ -24,11 +24,11 @@ const RecentComments = () => {
               />
             </div>
             <div className="comment-text w-100">
-              <h5 className="font-normal mb-1">Patient 1</h5>
+              <h5 className="font-normal mb-1">Pavan kumar</h5>
               <span className="text-muted mr-2 font-12">
                 10:20 AM 20 may 2016
               </span>
-              <span className="badge badge-info badge-rounded text-uppercase font-medium text-white">
+              <span className="badge badge-success badge-rounded text-uppercase font-medium text-white">
                 View More 
               </span>
               <span className="mb-2 d-block font-14 text-muted font-light mt-3">
@@ -62,11 +62,11 @@ const RecentComments = () => {
               />
             </div>
             <div className="comment-text w-100">
-              <h5 className="font-normal mb-1">Patient 2</h5>
+              <h5 className="font-normal mb-1">Sonu Nigam</h5>
               <span className="text-muted mr-2 font-12">
                 10:20 AM 20 may 2016
               </span>
-              <span className="badge badge-info badge-rounded text-uppercase font-medium text-white">
+              <span className="badge badge-success badge-rounded text-uppercase font-medium text-white">
                 View More 
               </span>
               <span className="mb-2 d-block font-14 text-muted font-light mt-3">
@@ -86,11 +86,11 @@ const RecentComments = () => {
               />
             </div>
             <div className="comment-text w-100">
-              <h5 className="font-normal mb-1">Patient 3</h5>
+              <h5 className="font-normal mb-1">Sonu Nigam</h5>
               <span className="text-muted mr-2 font-12">
                 10:20 AM 20 may 2016
               </span>
-              <span className="badge badge-info badge-rounded text-uppercase font-medium text-white">
+              <span className="badge badge-success badge-rounded text-uppercase font-medium text-white">
                 View More 
               </span>
               <span className="mb-2 d-block font-14 text-muted font-light mt-3">
