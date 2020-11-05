@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector} from "react-redux";
 import { fetchEntries } from "../actions/fetchEntries";
+import { deleteEntry } from "../actions/deleteEntry";
 import {
     Card,
     CardText,
@@ -33,6 +34,14 @@ const ViewEntries = () => {
   const fetchAllEntries = () => {
       dispatch(fetchEntries());
   }
+
+  const deleteOneEntry = (event) => {
+      dispatch(deleteEntry(event));
+      dispatch(fetchEntries());
+  }
+
+  
+  // Formats Date
 
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   
@@ -78,7 +87,7 @@ const ViewEntries = () => {
                   </CardText>
                   <Button id="changeThis1">View Comments</Button>
                   <Button onClick={(event => redirect(event))}>Edit Entry</Button>
-                  <Button>Delete Entry</Button>
+                  <Button value={entry.id} onClick={(event => deleteOneEntry(event))}>Delete Entry</Button>
                   <UncontrolledCollapse toggler="#changeThis1">
                     <Card>
                       <CardBody>

@@ -18,10 +18,13 @@ const entryReducer = (state=initialState,action) => {
                 allEntries: [action.entries]
             }
 
-        case 'FETCH_ENTRIES':
+        case 'DELETE_ENTRY':
+
+            let remainingEntries = state.allEntries[0].filter (entry => entry.id !== action.entryId)
+
             return {
                 ...state,
-                allEntries: [action.entries]
+                allEntries: [remainingEntries]
             }
 
         default:
