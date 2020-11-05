@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import '../assets/scss/login-signup.css'
 
 const Login = () => {
+	// handles slide feature
+	const [providerPage, setProviderPage] = useState(false);
+	const [rightPanel, setRightPanel] = useState(false);
 
   // handles slide feature
   const [providerPage, setProviderPage] = useState(false)
@@ -85,6 +88,7 @@ const Login = () => {
         </div>
     </div>
   );
+
 };
 
 export default Login;
