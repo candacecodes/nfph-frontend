@@ -17,7 +17,7 @@ const NewEntry = () => {
 
   const [date, setDate] = useState('');
   const [issue, setIssue] = useState('');
-  // const [provider, setProvider] = useState('');
+  // const [provider, setProvider] = useState(''); I don't know if we want people to be able to change their providers?
   const [location, setLocation] = useState('');
   const [painLevel, setPainLevel] = useState('');
   const [comments, setComments] = useState('');
@@ -31,16 +31,15 @@ const NewEntry = () => {
     history.push('/patient/dashboard');
   }
 
-  // Submit Form
+
+  // Submits form
 
   const dispatch = useDispatch();
 
   const submitForm = (event) => {
 
     event.preventDefault();
-
     dispatch(postEntry(event))
-
     redirect(event);
 
   }

@@ -14,6 +14,8 @@ import img1 from '../assets/images/big/img1.jpg';
 
 const Profile = () => {
 
+  // This is just a temporary fix
+
   const [user, setUser] = useState({ user: {
     first_name: '',
     last_name: '',
