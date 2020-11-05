@@ -18,6 +18,7 @@ import {
     Input,
     UncontrolledCollapse
 } from 'reactstrap';
+import { enterEditEntryMode } from "../actions/enterEditEntryMode";
 
 const ViewEntries = () => {
 
@@ -38,6 +39,11 @@ const ViewEntries = () => {
   const deleteOneEntry = (event) => {
       dispatch(deleteEntry(event));
       dispatch(fetchEntries());
+  }
+
+  const editEntry = (event) => {
+    dispatch(enterEditEntryMode(event));
+    redirect(event)
   }
 
   
@@ -86,7 +92,7 @@ const ViewEntries = () => {
                     <small className="text-muted">3 comments</small>
                   </CardText>
                   <Button id="changeThis1">View Comments</Button>
-                  <Button onClick={(event => redirect(event))}>Edit Entry</Button>
+                  <Button value={entry.id} onClick={(event => editEntry(event))} >Edit Entry</Button>
                   <Button value={entry.id} onClick={(event => deleteOneEntry(event))}>Delete Entry</Button>
                   <UncontrolledCollapse toggler="#changeThis1">
                     <Card>

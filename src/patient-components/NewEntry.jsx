@@ -2,11 +2,13 @@ import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { postEntry } from "../actions/postEntry";
+import { patchEntry } from "../actions/patchEntry";
 import {
   Card,
   CardBody,
   CardTitle
 } from 'reactstrap';
+import { enterEditEntryMode } from "../actions/enterEditEntryMode";
 
 // Change header to say new entry or update entry based on what the user is doing
 // Need to fetch the entry details using the id which will be passed from the view all entries page
@@ -21,7 +23,8 @@ const NewEntry = () => {
   const [location, setLocation] = useState('');
   const [painLevel, setPainLevel] = useState('');
   const [comments, setComments] = useState('');
-
+  
+  const editEntryMode = useSelector(state => state.entryReducer.editEntryMode)
 
   // Takes user to patient dashboard once their entry has been posted
   
@@ -31,7 +34,6 @@ const NewEntry = () => {
     history.push('/patient/dashboard');
   }
 
-
   // Submits form
 
   const dispatch = useDispatch();
@@ -39,7 +41,11 @@ const NewEntry = () => {
   const submitForm = (event) => {
 
     event.preventDefault();
-    dispatch(postEntry(event))
+    if (editEntryMode) {
+      dispatch(patchEntry(event));
+    } else {
+      dispatch(postEntry(event));
+    }
     redirect(event);
 
   }
@@ -51,7 +57,7 @@ const NewEntry = () => {
 
       <CardTitle className="bg-light border-bottom p-3 mb-0">
         <i className="mdi mdi-comment-processing-outline mr-2"> </i>
-        Create a New Entry
+        {editEntryMode === false ? "Create a New Entry" : "Update Entry"}
       </CardTitle>
 
       <CardBody className="card-body">
@@ -100,7 +106,7 @@ const NewEntry = () => {
           <br></br>
           <br></br>
 
-          <input className="btn btn btn-primary btn-lg" type="submit" value="Create New Entry" />
+          <input className="btn btn btn-primary btn-lg" type="submit" value={editEntryMode ? "Update Entry" : "Create New Entry"} />
 
         </form>
       </CardBody>
