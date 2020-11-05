@@ -39,6 +39,7 @@ const ViewEntries = () => {
               </CardText>
               <Button id="changeThis1">View Comments</Button>
               <Button onClick={(event => redirect(event))}>Edit Entry</Button>
+              <Button>Delete Entry</Button>
               <UncontrolledCollapse toggler="#changeThis1">
                 <Card>
                   <CardBody>
@@ -80,6 +81,7 @@ const ViewEntries = () => {
               </CardText>
               <Button id="changeThis2">View Comments</Button>
               <Button onClick={(event => redirect(event))}>Edit Entry</Button>
+              <Button>Delete Entry</Button>
               <UncontrolledCollapse toggler="#changeThis2">
                 <Form>
                   <FormGroup>
@@ -104,6 +106,7 @@ const ViewEntries = () => {
               </CardText>
               <Button id="changeThis3">View Comments</Button>
               <Button onClick={(event => redirect(event))}>Edit Entry</Button>
+              <Button>Delete Entry</Button>
               <UncontrolledCollapse toggler="#changeThis3">
                 <Card>
                   <CardBody>

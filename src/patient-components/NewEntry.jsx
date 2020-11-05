@@ -1,5 +1,7 @@
 import React, {useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
+import { postEntry } from "../actions/postEntry";
 import {
   Card,
   CardBody,
@@ -10,12 +12,8 @@ import {
 // Need to fetch the entry details using the id which will be passed from the view all entries page
 
 const NewEntry = () => {
-  
-  const history = useHistory();
 
-  const redirect = (event) => {
-    history.push('/patient/dashboard');
-  }
+  // Sets up state for controlled add/edit entry form
 
   const [date, setDate] = useState('');
   const [issue, setIssue] = useState('');
@@ -24,33 +22,29 @@ const NewEntry = () => {
   const [painLevel, setPainLevel] = useState('');
   const [comments, setComments] = useState('');
 
+
+  // Takes user to patient dashboard once their entry has been posted
+  
+  const history = useHistory();
+
+  const redirect = (event) => {
+    history.push('/patient/dashboard');
+  }
+
+  // Submit Form
+
+  const dispatch = useDispatch();
+
   const submitForm = (event) => {
 
     event.preventDefault();
 
-    let data = {
-      patient_id: 1,
-      date_of_entry: new Date(),
-      symptom_onset: event.target.date.value,
-      issue: event.target.issue.value,
-      image: ' ',
-      location: event.target.location.value,
-      pain_level: event.target.painLevel.value,
-      symptoms: event.target.comments.value
-    }
-
-    fetch('http://localhost:3000/entries',{
-      method:"POST",
-      headers:{
-          'Content-Type':'application/json'
-      },
-      body:JSON.stringify(data)
-    })
-    .then(response => response.json())
+    dispatch(postEntry(event))
 
     redirect(event);
 
   }
+
 
   return (
 
