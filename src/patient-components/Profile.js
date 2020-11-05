@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {
   Card,
@@ -13,6 +14,10 @@ import {
 import img1 from '../assets/images/big/img1.jpg';
 
 const Profile = () => {
+  // redux hooks
+  const state = useSelector(state => state.patient.patientInfo)
+  const dispatch = useDispatch()
+  console.log(state)
 
   const [user, setUser] = useState({ user: {
     first_name: '',

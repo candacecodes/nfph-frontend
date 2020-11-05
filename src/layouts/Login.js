@@ -1,15 +1,24 @@
 import React, {useState, useEffect} from "react";
-import '../assets/scss/login-signup.css'
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllOrganizations } from '../actions/organizationActions';
-import { createPatientProfile, patientLogin } from '../actions/patientActions';
+import { createPatientProfile, patientLogin, handlePersist } from '../actions/patientActions';
 import uuid from 'react-uuid';
+import '../assets/scss/login-signup.css'
 
 const Login = () => {
   // redux hooks
   const state = useSelector(state => state)
   const dispatch = useDispatch()
 
+  // redirects
+  const history = useHistory();
+  if (sessionStorage.token && sessionStorage.token != "undefined"){
+    dispatch(handlePersist())
+    history.push('/patient')
+  }
+
+  // useEffect
   useEffect(()=> {
     dispatch(fetchAllOrganizations())
   }, [])
@@ -30,12 +39,14 @@ const Login = () => {
   const [signUpPassword, setSignUpPassword] = useState('')
   const [npiNumber, setNPINumber] = useState('')
 
+  // renders org drop down for sign up forms
   const renderOrgDropDown = () => {
     return state.organizations.map(org => {
       return <option value={org.id} key={org.id}>{org.name}</option>
     })
   }
 
+  // sign up forms
   const renderPatientSignUp = () => {
     return (
       <form className='login-signin-form' onSubmit={(e) => handleSignUpSubmit(e, 'patient')}>
@@ -71,6 +82,7 @@ const Login = () => {
     )
   }
 
+  // create patient or provider
   const handleSignUpSubmit = (e, user) => {
     e.preventDefault()
     if (user === 'patient') {
@@ -97,6 +109,7 @@ const Login = () => {
     }
   }
 
+  // login feature
   const handleLoginSubmit = (e) => {
     e.preventDefault()
     let formData = {
