@@ -23,7 +23,24 @@ const ProviderAlerts = () => {
     }
 
     return (
-        <div>
+        <div>            <Card>
+        <CardTitle className="bg-light border-bottom p-3 mb-0">
+            <i className="mdi mdi-comment-processing-outline mr-2" />
+Notes Regarding Patient 
+  </CardTitle>
+        <CardBody className="">
+            <div>
+                <Alert
+                    color="info"
+                    isOpen={visible}
+                    toggle={onDismiss.bind(null)}
+                >
+To do which can be dismissed. 
+      </Alert>
+            </div>
+        </CardBody>
+    </Card>
+    
             <Card>
                 <CardTitle className="bg-light border-bottom p-3 mb-0">
                     <i className="mdi mdi-comment-processing-outline mr-2" />
@@ -103,25 +120,6 @@ const ProviderAlerts = () => {
                 Patient Entry 8
                 </a>
                 {/* . Give it a click if you like. */}
-              </Alert>
-                    </div>
-                </CardBody>
-            </Card>
-
-
-            <Card>
-                <CardTitle className="bg-light border-bottom p-3 mb-0">
-                    <i className="mdi mdi-comment-processing-outline mr-2" />
-Notes Regarding Patient 
-          </CardTitle>
-                <CardBody className="">
-                    <div>
-                        <Alert
-                            color="info"
-                            isOpen={visible}
-                            toggle={onDismiss.bind(null)}
-                        >
-To do which can be dismissed. 
               </Alert>
                     </div>
                 </CardBody>
