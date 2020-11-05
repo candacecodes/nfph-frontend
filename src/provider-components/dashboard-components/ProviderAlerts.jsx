@@ -4,7 +4,14 @@ import {
     // UncontrolledAlert,
     Card,
     CardBody,
-    CardTitle
+    CardTitle,
+    Button,
+    UncontrolledCollapse,
+    CardText,
+    Form,
+    FormGroup,
+    Label,
+    Input
 } from 'reactstrap';
 
 const ProviderAlerts = () => {
@@ -17,44 +24,6 @@ const ProviderAlerts = () => {
 
     return (
         <div>
-            {/* --------------------------------------------------------------------------------*/}
-            {/* Start Inner Div*/}
-            {/* --------------------------------------------------------------------------------*/}
-
-            {/* --------------------------------------------------------------------------------*/}
-            {/* Card-1*/}
-            {/* --------------------------------------------------------------------------------*/}
-            {/* <Card>
-                <CardTitle className="bg-light border-bottom p-3 mb-0">
-                    <i className="mdi mdi-comment-processing-outline mr-2"> </i>
-        Provider Alerts Test
-          </CardTitle>
-                <CardBody className="">
-                    <div className="mt-3">
-                        <Alert color="primary">
-                            This is a primary alert— check it out!
-              </Alert>
-                        <Alert color="secondary">
-                            This is a secondary alert— check it out!
-              </Alert>
-                        <Alert color="success">
-                            This is a success alert— check it out!
-              </Alert>
-                        <Alert color="danger">
-                            This is a danger alert— check it out!
-              </Alert>
-                        <Alert color="warning">
-                            This is a warning alert— check it out!
-              </Alert>
-                        <Alert color="info">This is a info alert— check it out!</Alert>
-                        <Alert color="light">This is a light alert— check it out!</Alert>
-                        <Alert color="dark">Patient Name </Alert>
-                    </div>
-                </CardBody>
-            </Card> */}
-            {/* --------------------------------------------------------------------------------*/}
-            {/* Card-2*/}
-            {/* --------------------------------------------------------------------------------*/}
             <Card>
                 <CardTitle className="bg-light border-bottom p-3 mb-0">
                     <i className="mdi mdi-comment-processing-outline mr-2" />
@@ -63,11 +32,27 @@ const ProviderAlerts = () => {
                 <CardBody className="">
                     <div>
                         <Alert color="primary">
-                            {/* This is a primary alert with */}
+                        <b>Patient Entry 1: Date1 </b>
                 <a href="/" className="alert-link">
-                                Patient Entry 1 
-                </a>
-                <button>Leave Comment</button>
+                </a><br></br><br></br>
+                <Button id="changeThis1">View Entry Details</Button><br/><br/>
+              <UncontrolledCollapse toggler="#changeThis1">
+                <Card>
+                  <CardBody>
+                    <CardTitle>September 20, 2020</CardTitle>
+                    <CardText>Mole start itching today</CardText>
+                  </CardBody>
+                </Card>
+                <Form>
+                  <FormGroup>
+                    <Label for="exampleText">Add Comment</Label>
+                    <Input type="textarea" name="text" id="exampleText" />
+                    <br></br>
+                    <Button className="btn" outline color="info" size="sm">Submit</Button>
+                  </FormGroup>
+                </Form>
+              </UncontrolledCollapse>
+
                 {/* . Give it a click if you like. */}
               </Alert>
                         <Alert color="secondary">
