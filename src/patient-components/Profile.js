@@ -17,8 +17,13 @@ const Profile = () => {
   // redux hooks
   const state = useSelector(state => state.patient.patientInfo)
   const dispatch = useDispatch()
-  console.log(state)
+  const history = useHistory();
 
+  const redirect = (event) => {
+    history.push('/');
+  }
+
+  // form control
   const [user, setUser] = useState({ user: {
     first_name: '',
     last_name: '',
@@ -28,29 +33,25 @@ const Profile = () => {
     organization_id: ''
   } });
 
+  // toggles edit mode
   const [editMode, setEditMode] = useState(false);
-
-   useEffect(() => {
-      fetchUser();
-   }, []);
-
-  async function fetchUser() {
-    const res = await fetch("http://localhost:3000/patients/1");
-    res
-      .json()
-      .then(response => setUser(response))
-      .catch(error => console.log(error));
-  }
-
-  const history = useHistory();
-
-  const redirect = (event) => {
-    history.push('/');
-  }
-
   const changeToEditMode = () => {
     setEditMode(!editMode)
   }
+
+  useEffect(() => {
+    if (state) {
+      setUser(state)
+    }
+  });
+
+  // async function fetchUser() {
+  //   const res = await fetch("http://localhost:3000/patients/1");
+  //   res
+  //     .json()
+  //     .then(response => setUser(response))
+  //     .catch(error => console.log(error));
+  // }
 
   // To get this to work, I commented out the authorized before_action and the validations in the model
   const updateProfile = (event) => {
@@ -64,15 +65,15 @@ const Profile = () => {
       email_address: event.target.emailAddress.value
     }
 
-    fetch("http://localhost:3000/patients/1",{
-      method:"PATCH",
-      headers:{
-          'Content-Type':'application/json'
-      },
-      body:JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(fetchUser())
+    // fetch("http://localhost:3000/patients/1",{
+    //   method:"PATCH",
+    //   headers:{
+    //       'Content-Type':'application/json'
+    //   },
+    //   body:JSON.stringify(data)
+    // })
+    // .then(response => response.json())
+    // .then(fetchUser())
 
   }
 
@@ -103,7 +104,7 @@ const Profile = () => {
                           <CardImg width="100%" src={img1} />
                               <div className="overlay-box">
                                   <div className="user-content">
-                                      <h4 className="mt-2">{user.first_name}</h4>
+                                      <h4 className="mt-2">{user.first_name} {user.last_name}</h4>
                                   </div>
                               </div>
                       </div>
@@ -116,14 +117,14 @@ const Profile = () => {
                   <Card>
                     <CardBody>
                         <CardTitle>Name</CardTitle>
-                        <CardSubtitle>{user.first_name}</CardSubtitle>
+                        <CardSubtitle>{user.first_name + ' ' + user.last_name}</CardSubtitle>
                         <CardTitle>Email</CardTitle>
                         <CardSubtitle>{user.email_address}</CardSubtitle>
                         <CardTitle>Diagnosis</CardTitle>
                         <CardSubtitle>{user.diagnosis}</CardSubtitle>
                         <CardTitle>Prescriptions</CardTitle>
                         <CardSubtitle>none</CardSubtitle>
-                        <CardTitle>Organisation</CardTitle>
+                        <CardTitle>Organization</CardTitle>
                         <CardSubtitle>{user.organization_id}</CardSubtitle>
                         <Button className="btn btn btn-primary btn-lg" onClick={changeToEditMode}>Edit Profile</Button>
                         <Button className="btn btn btn-primary btn-lg" onClick={deleteProfile}>Delete Profile</Button>
@@ -135,10 +136,17 @@ const Profile = () => {
                         {/* What do we want people to be able to edit? */}
                         <form onSubmit={(event) => updateProfile(event)}>
                           <CardTitle>Name</CardTitle>
-                          <input className="form-control-sm" type="text" name="firstName"/>
+                          <input className="form-control-sm" type="text" name="first_name" value={user.first_name}/><br/>
+                          <input className="form-control-sm" type="text" name="last_name" value={user.last_name}/>
                           <CardTitle>Email</CardTitle>
-                          <input className="form-control-sm" type="text" name="emailAddress"/>
+                          <input className="form-control-sm" type="text" name="email_address" value={user.email_address}/>
                           <CardTitle>Diagnosis</CardTitle>
+                          <select className="form-control-sm" type="text" name="diagnosis" value={user.diagnosis} defaultValue='n/a'>
+                            <option value='n/a' disabled>Choose your diagnosis...</option>
+                            <option value='n/a' disabled>Choose your diagnosis...</option>
+                            <option value='n/a' disabled>Choose your diagnosis...</option>
+                            <option value='n/a' disabled>Choose your diagnosis...</option>
+                          </select>
                           <CardSubtitle>{user.diagnosis}</CardSubtitle>
                           <CardTitle>Prescriptions</CardTitle>
                           <CardSubtitle>none</CardSubtitle>

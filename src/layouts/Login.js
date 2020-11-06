@@ -13,7 +13,7 @@ const Login = () => {
 
   // redirects
   const history = useHistory();
-  if (sessionStorage.token && sessionStorage.token != "undefined"){
+  if (localStorage.token && localStorage.token != "undefined"){
     dispatch(handlePersist())
     history.push('/patient')
   }
