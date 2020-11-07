@@ -81,3 +81,19 @@ export function editPatientProfile(formData, id){
             })
     }
 }
+
+export function deletePatientProfile(id){
+    return (dispatch) => {
+        dispatch({type: 'LOADING_PATIENT_PROFILE'})
+        fetch(`http://localhost:3000/patients/${id}`, {
+            method: 'DELETE'
+        })
+        .then(json => {
+            if (!json.error) {
+                dispatch({ type: 'DELETE_PATIENT' })
+            } else {
+                alert(json.error)
+            }
+        })
+    }
+}

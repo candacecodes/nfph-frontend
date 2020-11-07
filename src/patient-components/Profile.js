@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { editPatientProfile, handlePersist } from '../actions/patientActions';
+import { editPatientProfile, deletePatientProfile } from '../actions/patientActions';
 import {
   Card,
   CardBody,
@@ -21,6 +21,7 @@ const Profile = () => {
   const history = useHistory();
 
   const redirect = (event) => {
+    localStorage.clear()
     history.push('/');
   }
 
@@ -71,10 +72,7 @@ const Profile = () => {
 
   // Doesn't work yet because of foreign key constraints
   const deleteProfile = () => {
-    fetch(`http://localhost:3000/patients/1`, {
-      method: 'DELETE',
-    })
-    .then(response => response.json())
+    dispatch(deletePatientProfile(state.id))
     redirect()
   }
 

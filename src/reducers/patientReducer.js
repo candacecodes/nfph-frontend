@@ -4,6 +4,8 @@ export default function patientReducer(state = {}, action) {
             return {patientInfo: action.patient, token: action.token}
         case 'UPDATED_PATIENT':
             return {patientInfo: action.patient}
+        case 'DELETE_PATIENT':
+            return {}
         default:
             return state
     }
