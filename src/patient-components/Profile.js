@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { editPatientProfile, handlePersist } from '../actions/patientActions';
 import {
   Card,
   CardBody,
@@ -15,7 +16,7 @@ import img1 from '../assets/images/big/img1.jpg';
 
 const Profile = () => {
   // redux hooks
-  const state = useSelector(state => state.patient.patientInfo)
+  let state = useSelector(state => state.patient.patientInfo)
   const dispatch = useDispatch()
   const history = useHistory();
 
@@ -23,7 +24,7 @@ const Profile = () => {
     history.push('/');
   }
 
-  // form control
+  // displays user
   const [user, setUser] = useState({ user: {
     first_name: '',
     last_name: '',
@@ -33,48 +34,39 @@ const Profile = () => {
     organization_id: ''
   } });
 
-  // toggles edit mode
-  const [editMode, setEditMode] = useState(false);
-  const changeToEditMode = () => {
-    setEditMode(!editMode)
-  }
-
   useEffect(() => {
     if (state) {
       setUser(state)
-    }
-  });
+    }});
 
-  // async function fetchUser() {
-  //   const res = await fetch("http://localhost:3000/patients/1");
-  //   res
-  //     .json()
-  //     .then(response => setUser(response))
-  //     .catch(error => console.log(error));
-  // }
-
-  // To get this to work, I commented out the authorized before_action and the validations in the model
-  const updateProfile = (event) => {
-
-    event.preventDefault();
-
+  // toggle edit mode and set form control
+  const [editMode, setEditMode] = useState(false);
+  const changeToEditMode = () => {
     setEditMode(!editMode)
-    
-    let data = {
-      first_name: event.target.firstName.value,
-      email_address: event.target.emailAddress.value
-    }
+    setFormData(state)
+  }
 
-    // fetch("http://localhost:3000/patients/1",{
-    //   method:"PATCH",
-    //   headers:{
-    //       'Content-Type':'application/json'
-    //   },
-    //   body:JSON.stringify(data)
-    // })
-    // .then(response => response.json())
-    // .then(fetchUser())
+  // form control
+  const [formData, setFormData] = React.useState({
+    first_name: '',
+    last_name: '',
+    email_address: '',
+    diagnosis: '',
+    prescriptions: [],
+  })
 
+  const handleFormChange = e => {
+    setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+    })
+  }
+
+  // submit profile change
+  const updateProfile = (event) => {
+    event.preventDefault();
+    dispatch(editPatientProfile(formData, state.id))
+    setEditMode(!editMode)
   }
 
   // Doesn't work yet because of foreign key constraints
@@ -87,17 +79,13 @@ const Profile = () => {
   }
 
   return (
-
     <div>
-
         <CardTitle className="bg-light border-bottom p-3 mb-0">
             <i className="mdi mdi-comment-processing-outline mr-2"> </i>
             Profile
         </CardTitle>
-
         <div >
           <div className="row">
-
               <div className="col-lg-4 col-xlg-3 col-md-12">
                   <div className="white-box">
                       <div className="user-bg">
@@ -110,7 +98,6 @@ const Profile = () => {
                       </div>
                   </div>
               </div>
-
               <div className="col-lg-8 col-xlg-9 col-md-12">
                 {
                   editMode === false ?
@@ -136,24 +123,22 @@ const Profile = () => {
                         {/* What do we want people to be able to edit? */}
                         <form onSubmit={(event) => updateProfile(event)}>
                           <CardTitle>Name</CardTitle>
-                          <input className="form-control-sm" type="text" name="first_name" value={user.first_name}/><br/>
-                          <input className="form-control-sm" type="text" name="last_name" value={user.last_name}/>
+                          <input className="form-control-sm" type="text" name="first_name" defaultValue={formData.first_name} onChange={handleFormChange}/><br/>
+                          <input className="form-control-sm" type="text" name="last_name" defaultValue={formData.last_name} onChange={handleFormChange}/>
                           <CardTitle>Email</CardTitle>
-                          <input className="form-control-sm" type="text" name="email_address" value={user.email_address}/>
+                          <input className="form-control-sm" type="text" name="email_address" defaultValue={formData.email_address} onChange={handleFormChange}/>
                           <CardTitle>Diagnosis</CardTitle>
-                          <select className="form-control-sm" type="text" name="diagnosis" value={user.diagnosis} defaultValue='n/a'>
+                          <select className="form-control-sm" type="text" name="diagnosis" defaultValue='n/a' onChange={handleFormChange}>
                             <option value='n/a' disabled>Choose your diagnosis...</option>
-                            <option value='n/a' disabled>Choose your diagnosis...</option>
-                            <option value='n/a' disabled>Choose your diagnosis...</option>
-                            <option value='n/a' disabled>Choose your diagnosis...</option>
+                            <option value='Neurofibromatosis type 1 (NF1)'>Neurofibromatosis type 1 (NF1)</option>
+                            <option value='Neurofibromatosis type 2 (NF2)'>Neurofibromatosis type 2 (NF2)</option>
+                            <option value='Schwannomatosis (SWN)'>Schwannomatosis (SWN)</option>
                           </select>
-                          <CardSubtitle>{user.diagnosis}</CardSubtitle>
                           <CardTitle>Prescriptions</CardTitle>
                           <CardSubtitle>none</CardSubtitle>
-                          <CardTitle>Organisation</CardTitle>
+                          <CardTitle>Organization</CardTitle>
                           <CardSubtitle>{user.organization_id}</CardSubtitle>
                           <input className="btn btn btn-primary btn-lg" type="submit" value="Save Profile"/>
-                          {/* <Button className="btn btn btn-primary btn-lg" type="button" onClick={deleteProfile}>Delete Profile</Button> */}
                         </form>
                     </CardBody>
                   </Card>

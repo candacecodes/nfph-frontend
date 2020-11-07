@@ -59,3 +59,25 @@ export function handlePersist(){
         })
     }
 }
+
+export function editPatientProfile(formData, id){
+    return (dispatch) => {
+        dispatch({type: 'LOADING_PATIENT_PROFILE'})
+        fetch(`http://localhost:3000/patients/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(res => res.json())
+            .then(json => {
+                if (!json.error) {
+                    dispatch({type: 'UPDATED_PATIENT', patient: json})
+                } else {
+                    alert(json.error)
+                }
+            })
+    }
+}
