@@ -11,10 +11,10 @@ import {
 
 export default class AudioTest extends Component {
     render() {
-        var audio1 = new Audio("../public/sound.mp3")
-        var audio2 = new Audio("../public/sound.mp3")
-        var audio3 = new Audio("../public/sound.mp3")
-        var audio4 = new Audio("../public/sound.mp3")
+        var audio1 = new Audio("../public/sound1.mp3")
+        var audio2 = new Audio("../public/sound2.mp3")
+        var audio3 = new Audio("../public/sound3.mp3")
+        var audio4 = new Audio("../public/sound4.mp3")
 
         return (
             <div> 
