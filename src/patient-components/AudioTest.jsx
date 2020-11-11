@@ -56,7 +56,9 @@ export default class AudioTest extends Component {
           <h6 className="card-subtitle">Select the lowest Sound Volume audible to you:</h6> <br/>
 
 
-          <input className="form-control-lg" type="number" min="1" max="5"/>
+          <input className="form-control-lg" type="number" min="1" max="5"/> <br/> <br/> 
+          <Button className="btn" color="info" type="submit" value={"Submit Entry"}> Save </Button> 
+
 
 </center>
             </div>
