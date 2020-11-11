@@ -30,7 +30,7 @@ export default class AudioTest extends Component {
     RenderButtonSound = () => {
         return audioClips.map((soundObj, index) => {
             return( <> 
-                <Button className="btn" color="primary" key={index} onClick={() => this.soundPlay(soundObj.sound)}> {soundObj.label} </Button> <br/> <br/></> 
+                <Button className="btn" color="info" key={index} onClick={() => this.soundPlay(soundObj.sound)}> {soundObj.label} </Button> <br/> <br/></> 
             ) 
 
         })
@@ -53,7 +53,7 @@ export default class AudioTest extends Component {
 
 
           <input className="form-control-lg" type="number" min="1" max="5"/> <br/> <br/> 
-          <Button className="btn" color="info" type="submit" value={"Submit Entry"}> Save </Button> 
+          <Button className="btn" color="success" type="submit" value={"Submit Entry"}> Save </Button> 
 
 
 </center>
