@@ -8,9 +8,9 @@ import Login from "./layouts/Login.js"
 import indexRoutes from "./routes/index.jsx";
 import { Route, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+// import { Provider } from "react-redux";
+// import { createStore, applyMiddleware } from 'redux';
+// import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer'
 
 import "./assets/scss/style.scss";
