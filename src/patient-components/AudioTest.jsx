@@ -11,7 +11,13 @@ import {
 import {Howl} from "howler";
 
 const audioClips = [
-    {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "Sound 1"}
+    {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "Sound 1"},
+    {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "Sound 2"},
+    {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "Sound 3"},
+    {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "Sound 4"}
+
+
+
 ]
 
 export default class AudioTest extends Component {
@@ -27,9 +33,10 @@ export default class AudioTest extends Component {
     RenderButtonSound = () => {
         return audioClips.map((soundObj, index) => {
             return(
-                <Button className="btn" color="primary" key={index} onClick={() => this.soundPlay(soundObj.sound)}> {soundObj.label}</Button>
-            )
-        })
+                <Button className="btn" color="primary" key={index} onClick={() => this.soundPlay(soundObj.sound)}> {soundObj.label} </Button> 
+            ) 
+
+        }) 
     }
     render() {
         return (
