@@ -1,7 +1,27 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllOrganizations } from '../actions/organizationActions';
+import { createPatientProfile, patientLogin, handlePersist } from '../actions/patientActions';
+import uuid from 'react-uuid';
 import '../assets/scss/login-signup.css'
 
 const Login = () => {
+  // redux hooks
+  const state = useSelector(state => state)
+  const dispatch = useDispatch()
+
+  // redirects
+  const history = useHistory();
+  if (localStorage.token && localStorage.token != "undefined"){
+    dispatch(handlePersist())
+    history.push('/patient')
+  }
+
+  // useEffect
+  useEffect(()=> {
+    dispatch(fetchAllOrganizations())
+  }, [])
 
   // handles slide feature
   const [providerPage, setProviderPage] = useState(false)
@@ -19,15 +39,25 @@ const Login = () => {
   const [signUpPassword, setSignUpPassword] = useState('')
   const [npiNumber, setNPINumber] = useState('')
 
+  // renders org drop down for sign up forms
+  const renderOrgDropDown = () => {
+    return state.organizations.map(org => {
+      return <option value={org.id} key={org.id}>{org.name}</option>
+    })
+  }
 
+  // sign up forms
   const renderPatientSignUp = () => {
     return (
-      <form className='login-signin-form' action="#">
+      <form className='login-signin-form' onSubmit={(e) => handleSignUpSubmit(e, 'patient')}>
         <h2>Create Patient Account</h2>
             <input className='login-signup-input' type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)}/>
             <input className='login-signup-input' type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)}/>
             <input className='login-signup-input' type="email" placeholder="Email" onChange={(e) => setSignUpEmail(e.target.value)}/>
-            <input className='login-signup-input' type="text" placeholder="Organization" onChange={(e) => setOrganization(e.target.value)}/>
+            <select className='login-signup-input' type="select" placeholder="Organization" onChange={(e) => setOrganization(e.target.value)} defaultValue='n/a'>
+              <option value='n/a' disabled>Organization</option>
+              {renderOrgDropDown()}
+            </select>
             <input className='login-signup-input' type="password" placeholder="Password" onChange={(e) => setSignUpPassword(e.target.value)}/><br/>
             <button className='login-signin-button'>Sign Up</button>
       </form>
@@ -36,17 +66,61 @@ const Login = () => {
 
   const renderProviderSignUp = () => {
     return (
-      <form className='login-signin-form' action="#">
+      <form className='login-signin-form' onSubmit={(e) => handleSignUpSubmit(e, 'provider')}>
         <h2>Create Provider Account</h2>
         <input className='login-signup-input' type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)}/>
             <input className='login-signup-input' type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)}/>
             <input className='login-signup-input' type="email" placeholder="Email" onChange={(e) => setSignUpEmail(e.target.value)}/>
-            <input className='login-signup-input' type="text" placeholder="Organization" onChange={(e) => setOrganization(e.target.value)}/>
+            <select className='login-signup-input' type="select" placeholder="Organization" onChange={(e) => setOrganization(e.target.value)} defaultValue='n/a'>
+              <option value='n/a' disabled>Organization</option>
+              {renderOrgDropDown()}
+            </select>
             <input className='login-signup-input' type="password" placeholder="Password" onChange={(e) => setSignUpPassword(e.target.value)}/>
             <input className='login-signup-input' type="number" placeholder="NPI Number" onChange={(e) => setNPINumber(e.target.value)}/><br/>
             <button className='login-signin-button'>Sign Up</button>
       </form>
     )
+  }
+
+  // create patient or provider
+  const handleSignUpSubmit = (e, user) => {
+    e.preventDefault()
+    if (user === 'patient') {
+      let formData = {
+        first_name: firstName, 
+        last_name: lastName, 
+        email_address: signUpEmail, 
+        organization_id: organization, 
+        password: signUpPassword,
+        patient_uuid: uuid()
+      }
+      dispatch(createPatientProfile(formData))
+    } else if (user === 'provider') {
+      let formData = {
+        first_name: firstName, 
+        last_name: lastName, 
+        email_address: signUpEmail, 
+        organization_id: organization, 
+        password: signUpPassword,
+        NPI_number: npiNumber,
+        provider_uuid: uuid()
+      }
+      // add create a provider
+    }
+  }
+
+  // login feature
+  const handleLoginSubmit = (e) => {
+    e.preventDefault()
+    let formData = {
+      email_address: loginEmail, 
+      password: loginPassword,
+    }
+    if (providerPage) {
+      // add provider login
+    } else {
+      dispatch(patientLogin(formData))
+    }
   }
 
   return (
@@ -58,7 +132,7 @@ const Login = () => {
           : renderPatientSignUp()}
 	    </div>
         <div className="form-container sign-in-container">
-            <form className='login-signin-form' action="#">
+            <form className='login-signin-form' onSubmit={handleLoginSubmit}>
                 <h2>{providerPage ? 'Provider' : 'Patient'} Sign in</h2>
                 <input className='login-signup-input' type="email" placeholder="Email" onChange={(e) => setLoginEmail(e.target.value)}/>
                 <input className='login-signup-input' type="password" placeholder="Password" onChange={(e) => setLoginPassword(e.target.value)}/>
