@@ -11,7 +11,7 @@ import {
 import {Howl} from "howler";
 
 const audioClips = [
-    {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "ding"}
+    {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "Sound 1"}
 ]
 
 export default class AudioTest extends Component {
@@ -32,21 +32,19 @@ export default class AudioTest extends Component {
         })
     }
     render() {
-        var audioSource = new Audio("../public/sound1.mp3")
-
         return (
             <div> 
                 <center>
                     <h1>Audio Test </h1>
                     <br/>
-                    <h3>Please press button to hear sound</h3>
-                    <h2> Sounds </h2>
+                    <h3>Please press button to hear sound</h3><br/>
                     {this.RenderButtonSound()}
                     {/* <br/><br/><Button className="btn" color="primary" onClick={null}>Sound Volume 1</Button> 
                     <br/><br/><Button className="btn" color="primary" onClick={null}>Sound Volume 2</Button> 
                     <br/><br/><Button className="btn" color="primary" onClick={null}>Sound Volume 3</Button> 
                     <br/><br/><Button className="btn" color="primary" onClick={null}>Sound Volume 4</Button> 
                     <br/><br/> */}
+                    <br/><br/>
                     <h4 className="col-form-label-lg">Log Entry</h4>
           <h6 className="card-subtitle">Select the lowest Sound Volume audible to you:</h6> <br/>
 
