@@ -21,6 +21,12 @@ export default class AudioTest extends Component {
                     <br/><br/><Button className="btn" color="primary">Sound Volume 2</Button> 
                     <br/><br/><Button className="btn" color="primary">Sound Volume 3</Button> 
                     <br/><br/><Button className="btn" color="primary">Sound Volume 4</Button> 
+                    <br/><br/>
+                    <h4 className="col-form-label-lg">Log Entry</h4>
+          <h6 className="card-subtitle">Select the lowest Sound Volume audible to you:</h6> <br/>
+
+          <input className="form-control-lg" type="number" min="1" max="5"/>
+
 </center>
             </div>
         )
