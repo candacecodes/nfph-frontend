@@ -8,13 +8,31 @@ import {
     Row,
     Col
 } from 'reactstrap';
+import {Howl} from "howler";
+
+const audioClips = [
+    {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "ding"}
+]
 
 export default class AudioTest extends Component {
+
+    soundPlay = (src) => {
+        const sound = new Howl ({
+            src, 
+            html5: true 
+        })
+        sound.play();
+    }
+
+    RenderButtonSound = () => {
+        return audioClips.map((soundObj, index) => {
+            return(
+                <Button className="btn" color="primary" key={index} onClick={() => this.soundPlay(soundObj.sound)}> {soundObj.label}</Button>
+            )
+        })
+    }
     render() {
-        var audio1 = new Audio("../public/sound1.mp3")
-        var audio2 = new Audio("../public/sound2.mp3")
-        var audio3 = new Audio("../public/sound3.mp3")
-        var audio4 = new Audio("../public/sound4.mp3")
+        var audioSource = new Audio("../public/sound1.mp3")
 
         return (
             <div> 
@@ -22,15 +40,16 @@ export default class AudioTest extends Component {
                     <h1>Audio Test </h1>
                     <br/>
                     <h3>Please press button to hear sound</h3>
-                    <br/><br/><Button className="btn" color="primary" onClick={audio1.play()}>Sound Volume 1</Button> 
-                    <br/><br/><Button className="btn" color="primary" onClick={audio2.play()}>Sound Volume 2</Button> 
-                    <br/><br/><Button className="btn" color="primary" onClick={audio3.play()}>Sound Volume 3</Button> 
-                    <br/><br/><Button className="btn" color="primary" onClick={audio4.play()}>Sound Volume 4</Button> 
-                    <br/><br/>
+                    <h2> Sounds </h2>
+                    {this.RenderButtonSound()}
+                    {/* <br/><br/><Button className="btn" color="primary" onClick={null}>Sound Volume 1</Button> 
+                    <br/><br/><Button className="btn" color="primary" onClick={null}>Sound Volume 2</Button> 
+                    <br/><br/><Button className="btn" color="primary" onClick={null}>Sound Volume 3</Button> 
+                    <br/><br/><Button className="btn" color="primary" onClick={null}>Sound Volume 4</Button> 
+                    <br/><br/> */}
                     <h4 className="col-form-label-lg">Log Entry</h4>
           <h6 className="card-subtitle">Select the lowest Sound Volume audible to you:</h6> <br/>
 
-          {/* <input className="form-control-lg" type="number" min="1" max="5" name="painLevel" value={painLevel} onChange={(event) => setPainLevel(event.target.value)}/> */}
 
           <input className="form-control-lg" type="number" min="1" max="5"/>
 
@@ -39,3 +58,8 @@ export default class AudioTest extends Component {
         )
     }
 }
+// Form example 
+{/* <input className="form-control-lg" type="number" min="1" max="5" name="painLevel" value={painLevel} onChange={(event) => setPainLevel(event.target.value)}/> */}
+
+// Button => onClick function 
+{/* <br/><br/><Button className="btn" color="primary" onClick={audioSource.play()}>Sound Volume 2</Button>  */}
