@@ -3,6 +3,8 @@ import NewEntry from "../patient-components/NewEntry.jsx";
 import Profile from "../patient-components/Profile.jsx";
 import ViewEntries from "../patient-components/ViewEntries.jsx";
 import Providers from "../patient-components/Providers.jsx";
+import AudioTest from "../patient-components/AudioTest.jsx";
+
 
 // ui components
 import Alerts from "../views/ui-components/alert.jsx";
@@ -44,6 +46,12 @@ var PatientRoutes = [
     name: "Profile",
     icon: " fas fa-user",
     component: Profile,
+  },
+  {
+    path: "/patient/audiotest",
+    name: "Audio Test",
+    icon: "fas fa-comment-alt",
+    component: AudioTest,
   },
   {
     path: "/patient/alert",
