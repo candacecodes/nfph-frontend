@@ -7,14 +7,19 @@
     "bootstrap": "4.1.3",
     "chart.js": "2.7.2",
     "history": "4.7.2",
-    "react": "^16.8.3",
-    "react-chartjs-2": "^2.7.4",
-    "react-dom": "^16.8.3",
+    "react": "^16.14.0",
+    "react-chartjs-2": "^2.10.0",
+    "react-dom": "^16.14.0",
     "react-perfect-scrollbar": "1.2.0",
     "react-redux": "^7.2.2",
+<<<<<<< HEAD
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.4",
+=======
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
     "react-uuid": "^1.0.2",
+>>>>>>> 9972dc34570d4ba91c81f7c549a143006a86a73b
     "reactstrap": "6.4.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
@@ -39,6 +44,6 @@
   },
   "devDependencies": {
     "node-sass": "^4.14.1",
-    "sass-loader": "^10.0.2"
+    "sass-loader": "^10.0.5"
   }
 }

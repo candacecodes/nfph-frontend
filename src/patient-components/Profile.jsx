@@ -25,7 +25,12 @@ const Profile = () => {
     history.push('/');
   }
 
+<<<<<<< HEAD
+  // This is just a temporary fix
+
+=======
   // displays user
+>>>>>>> 9972dc34570d4ba91c81f7c549a143006a86a73b
   const [user, setUser] = useState({ user: {
     first_name: '',
     last_name: '',

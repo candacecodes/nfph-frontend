@@ -1,15 +1,32 @@
 import React, {useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
+import { postEntry } from "../actions/postEntry";
+import { patchEntry } from "../actions/patchEntry";
 import {
   Card,
   CardBody,
   CardTitle
 } from 'reactstrap';
+import { enterEditEntryMode } from "../actions/enterEditEntryMode";
 
 // Change header to say new entry or update entry based on what the user is doing
 // Need to fetch the entry details using the id which will be passed from the view all entries page
 
 const NewEntry = () => {
+
+  // Sets up state for controlled add/edit entry form
+
+  const [date, setDate] = useState('');
+  const [issue, setIssue] = useState('');
+  // const [provider, setProvider] = useState(''); I don't know if we want people to be able to change their providers?
+  const [location, setLocation] = useState('');
+  const [painLevel, setPainLevel] = useState('');
+  const [comments, setComments] = useState('');
+  
+  const editEntryMode = useSelector(state => state.entryReducer.editEntryMode)
+
+  // Takes user to patient dashboard once their entry has been posted
   
   const history = useHistory();
 
@@ -17,40 +34,22 @@ const NewEntry = () => {
     history.push('/patient/dashboard');
   }
 
-  const [date, setDate] = useState('');
-  const [issue, setIssue] = useState('');
-  // const [provider, setProvider] = useState('');
-  const [location, setLocation] = useState('');
-  const [painLevel, setPainLevel] = useState('');
-  const [comments, setComments] = useState('');
+  // Submits form
+
+  const dispatch = useDispatch();
 
   const submitForm = (event) => {
 
     event.preventDefault();
-
-    let data = {
-      patient_id: 1,
-      date_of_entry: new Date(),
-      symptom_onset: event.target.date.value,
-      issue: event.target.issue.value,
-      image: ' ',
-      location: event.target.location.value,
-      pain_level: event.target.painLevel.value,
-      symptoms: event.target.comments.value
+    if (editEntryMode) {
+      dispatch(patchEntry(event));
+    } else {
+      dispatch(postEntry(event));
     }
-
-    fetch('http://localhost:3000/entries',{
-      method:"POST",
-      headers:{
-          'Content-Type':'application/json'
-      },
-      body:JSON.stringify(data)
-    })
-    .then(response => response.json())
-
     redirect(event);
 
   }
+
 
   return (
 
@@ -58,7 +57,7 @@ const NewEntry = () => {
 
       <CardTitle className="bg-light border-bottom p-3 mb-0">
         <i className="mdi mdi-comment-processing-outline mr-2"> </i>
-        Create a New Entry
+        {editEntryMode === false ? "Create a New Entry" : "Update Entry"}
       </CardTitle>
 
       <CardBody className="card-body">
@@ -107,7 +106,7 @@ const NewEntry = () => {
           <br></br>
           <br></br>
 
-          <input className="btn btn btn-primary btn-lg" type="submit" value="Create New Entry" />
+          <input className="btn btn btn-primary btn-lg" type="submit" value={editEntryMode ? "Update Entry" : "Create New Entry"} />
 
         </form>
       </CardBody>
