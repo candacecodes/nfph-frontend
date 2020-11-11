@@ -15,9 +15,6 @@ const audioClips = [
     {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "Sound Volume 2"},
     {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "Sound Volume 3"},
     {sound: "https://assets.coderrocketfuel.com/pomodoro-times-up.mp3", label: "Sound Volume 4"}
-
-
-
 ]
 
 export default class AudioTest extends Component {
@@ -32,8 +29,8 @@ export default class AudioTest extends Component {
 
     RenderButtonSound = () => {
         return audioClips.map((soundObj, index) => {
-            return(
-                <Button className="btn" color="primary" key={index} onClick={() => this.soundPlay(soundObj.sound)}> {soundObj.label} </Button> 
+            return( <> 
+                <Button className="btn" color="primary" key={index} onClick={() => this.soundPlay(soundObj.sound)}> {soundObj.label} </Button> <br/> <br/></> 
             ) 
 
         })
@@ -52,8 +49,7 @@ export default class AudioTest extends Component {
                     <br/><br/><Button className="btn" color="primary" onClick={null}>Sound Volume 4</Button> 
                     <br/><br/> */}
                     <br/><br/>
-                    <h4 className="col-form-label-lg">Log Entry</h4>
-          <h6 className="card-subtitle">Select the lowest Sound Volume audible to you:</h6> <br/>
+          <h4 className="card-subtitle">Select the lowest Sound Volume audible to you:</h4> <br/>
 
 
           <input className="form-control-lg" type="number" min="1" max="5"/> <br/> <br/> 
