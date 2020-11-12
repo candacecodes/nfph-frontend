@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector} from "react-redux";
+import ViewComment from "./ViewComment.jsx";
 import { fetchEntries } from "../actions/fetchEntries";
 import { deleteEntry } from "../actions/deleteEntry";
+import { getComments } from "../actions/commentActions";
 import {
     Card,
     CardText,
@@ -23,6 +25,8 @@ import { enterEditEntryMode } from "../actions/enterEditEntryMode";
 const ViewEntries = () => {
 
   const allEntries = useSelector(state => state.entryReducer.allEntries[0])
+  // const comments = useSelector(state => state.commentReducer.numberComments)
+  const comments = 1
 
   // Fetches all entries when the user goes to view all entries
 
@@ -73,7 +77,16 @@ const ViewEntries = () => {
   const createEntryCards = () => {
 
       return allEntries.map(entry => {
+        const entryToggler = 'comment' + entry.id
+        const entryId = entry.id
 
+        const comments = useSelector(state => state.commentReducer.comments)
+      
+        const viewCommentsByEntry = (entryId) => {
+          dispatch(getComments(entryId))
+          return <ViewComment />
+        }
+      
         return (
           <Row>
             <Col>
@@ -89,24 +102,13 @@ const ViewEntries = () => {
                   <CardTitle>Symptoms</CardTitle>
                   <CardText>{entry.symptoms}</CardText>
                   <CardText>
-                    <small className="text-muted">3 comments</small>
+                    <small className="text-muted">{comments} comments</small>
                   </CardText>
-                  <Button id="changeThis1">View Comments</Button>
+                  <Button id={entryToggler}>View Comments</Button>
                   <Button value={entry.id} onClick={(event => editEntry(event))} >Edit Entry</Button>
                   <Button value={entry.id} onClick={(event => deleteOneEntry(event))}>Delete Entry</Button>
-                  <UncontrolledCollapse toggler="#changeThis1">
-                    <Card>
-                      <CardBody>
-                        <CardTitle>July 15, 2020</CardTitle>
-                        <CardText>A friend started noticing this mole looked weird.</CardText>
-                      </CardBody>
-                    </Card>
-                    <Card>
-                      <CardBody>
-                        <CardTitle>September 20, 2020</CardTitle>
-                        <CardText>Mole start itching today</CardText>
-                      </CardBody>
-                    </Card>
+                  <UncontrolledCollapse toggler={entryToggler}>
+                    { comments > 0 ? viewCommentsByEntry(entryId) : null }
                     <Form>
                       <FormGroup>
                         <Label for="exampleText">Add Comment</Label>
@@ -118,10 +120,8 @@ const ViewEntries = () => {
               </Card>
             </Col>
           </Row>
-        
         )
       })
-    
 
   }
 
@@ -139,105 +139,6 @@ const ViewEntries = () => {
     <div>
       <h4 className="mb-3">All Entries</h4>
       {allEntries ? createEntryCards() : null}
-      {/* <Row>
-        <Col>
-          <Card outline color="danger" className="border">
-            <CardHeader>Date of entry</CardHeader>
-            <CardBody>
-              <CardTitle>Special Title Treatment</CardTitle>
-              <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-              <CardText>
-                <small className="text-muted">3 comments</small>
-              </CardText>
-              <Button id="changeThis1">View Comments</Button>
-              <Button onClick={(event => redirect(event))}>Edit Entry</Button>
-              <Button>Delete Entry</Button>
-              <UncontrolledCollapse toggler="#changeThis1">
-                <Card>
-                  <CardBody>
-                    <CardTitle>July 15, 2020</CardTitle>
-                    <CardText>A friend started noticing this mole looked weird.</CardText>
-                  </CardBody>
-                </Card>
-                <Card>
-                  <CardBody>
-                    <CardTitle>September 20, 2020</CardTitle>
-                    <CardText>Mole start itching today</CardText>
-                  </CardBody>
-                </Card>
-                <Form>
-                  <FormGroup>
-                    <Label for="exampleText">Add Comment</Label>
-                    <Input type="textarea" name="text" id="exampleText" />
-                  </FormGroup>
-                </Form>
-              </UncontrolledCollapse>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Card outline color="success" className="border">
-            <CardHeader>Date of entry</CardHeader>
-            <CardBody>
-              <CardTitle>Thoughts</CardTitle>
-              <CardText>
-                - Card can be outlined, depending on severity?<br></br>
-                - If 0 comments, toggle view comment button to Add comment?<br></br>
-                - 1 comment vs 2 comments<br></br>
-                - images displayed aligned right with submitted pics
-              </CardText>
-              <CardText>
-                <small className="text-muted">0 comments</small>
-              </CardText>
-              <Button id="changeThis2">View Comments</Button>
-              <Button onClick={(event => redirect(event))}>Edit Entry</Button>
-              <Button>Delete Entry</Button>
-              <UncontrolledCollapse toggler="#changeThis2">
-                <Form>
-                  <FormGroup>
-                    <Label for="exampleText">Add Comment</Label>
-                    <Input type="textarea" name="text" id="exampleText" />
-                  </FormGroup>
-                </Form>
-              </UncontrolledCollapse>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Card outline color="warning" className="border">
-            <CardHeader>Date of entry</CardHeader>
-            <CardBody>
-              <CardTitle>Note to self</CardTitle>
-              <CardText>Make comment isOpen card specific</CardText>
-              <CardText>
-                <small className="text-muted">1 comment</small>
-              </CardText>
-              <Button id="changeThis3">View Comments</Button>
-              <Button onClick={(event => redirect(event))}>Edit Entry</Button>
-              <Button>Delete Entry</Button>
-              <UncontrolledCollapse toggler="#changeThis3">
-                <Card>
-                  <CardBody>
-                    <CardTitle>November 2, 2020</CardTitle>
-                    <CardText>JK fixed it via uncontrolled collapse</CardText>
-                  </CardBody>
-                </Card>
-                <Form>
-                  <FormGroup>
-                    <Label for="exampleText">Add Comment</Label>
-                    <Input type="textarea" name="text" id="exampleText" />
-                  </FormGroup>
-                </Form>
-              </UncontrolledCollapse>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row> */}
-
     </div>
 
   );
