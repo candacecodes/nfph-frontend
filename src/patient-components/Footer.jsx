@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="footer text-center bg-white">
-      © 2020 Ample Admin by <a href="https://www.wrappixel.com/">WrapPixel</a>.
+      <a href="https://github.com/candacecodes/nfph-frontend">© 2020 NF Personalized Health </a>
     </footer>
   );
 };

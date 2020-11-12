@@ -11,7 +11,7 @@ import {
   DropdownMenu,
 } from "reactstrap";
 
-import profilephoto from "../assets/images/users/1.jpg";
+import profilephoto from "../assets/images/pictures/profile-picture.png";
 
 /*--------------------------------------------------------------------------------*/
 /* Import images which are need for the HEADER                                    */
@@ -78,7 +78,7 @@ const Header = () => {
                   className="rounded-circle"
                   width="31"
                 />
-                <span className="ml-2"> Steave</span>
+                <span className="ml-2"> User</span>
               </DropdownToggle>
               <DropdownMenu right className="user-dd">
                 <DropdownItem>
