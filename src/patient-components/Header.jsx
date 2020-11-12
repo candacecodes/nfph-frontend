@@ -11,16 +11,12 @@ import {
   DropdownMenu,
 } from "reactstrap";
 
-import profilephoto from "../assets/images/pictures/profile-picture.png";
-
 /*--------------------------------------------------------------------------------*/
 /* Import images which are need for the HEADER                                    */
 /*--------------------------------------------------------------------------------*/
-import logodarkicon from "../assets/images/logo-icon.png";
-import logolighticon from "../assets/images/logo-light-icon.png";
-import logodarktext from "../assets/images/logo-text.png";
-import logolighttext from "../assets/images/logo-light-text.png";
+
 import nfLogo from "../assets/images/pictures/logo.png";
+import profilephoto from "../assets/images/pictures/profile-picture.png";
 
 const Header = () => {
   /*--------------------------------------------------------------------------------*/
