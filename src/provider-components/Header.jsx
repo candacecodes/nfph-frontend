@@ -11,15 +11,12 @@ import {
   DropdownMenu,
 } from "reactstrap";
 
-import profilephoto from "../assets/images/users/1.jpg";
-
 /*--------------------------------------------------------------------------------*/
 /* Import images which are need for the HEADER                                    */
 /*--------------------------------------------------------------------------------*/
-import logodarkicon from "../assets/images/logo-icon.png";
-import logolighticon from "../assets/images/logo-light-icon.png";
-import logodarktext from "../assets/images/logo-text.png";
-import logolighttext from "../assets/images/logo-light-text.png";
+
+import nfLogo from "../assets/images/pictures/logo.png";
+import profilephoto from "../assets/images/pictures/profile-picture.png";
 
 const Header = () => {
   /*--------------------------------------------------------------------------------*/
@@ -32,19 +29,14 @@ const Header = () => {
   return (
     <header className="topbar navbarbg" data-navbarbg="skin5">
       <Navbar className="top-navbar" dark expand="md">
-        <div className="navbar-header" id="logobg" data-logobg="skin6">
+      <div className="navbar-header" id="logobg" data-logobg="skin6">
           {/*--------------------------------------------------------------------------------*/}
           {/* Logos Or Icon will be goes here for Light Layout && Dark Layout                */}
           {/*--------------------------------------------------------------------------------*/}
           <NavbarBrand href="/">
-            <b className="logo-icon">
-              <img src={logodarkicon} alt="homepage" className="dark-logo" />
-              <img src={logolighticon} alt="homepage" className="light-logo" />
+            <b >
+              <img src={nfLogo} alt="" id="nf-logo" />
             </b>
-            <span className="logo-text">
-              <img src={logodarktext} alt="homepage" className="dark-logo" />
-              <img src={logolighttext} className="light-logo" alt="homepage" />
-            </span>
           </NavbarBrand>
           {/*--------------------------------------------------------------------------------*/}
           {/* Mobile View Toggler  [visible only after 768px screen]                         */}
@@ -58,15 +50,6 @@ const Header = () => {
         </div>
         <Collapse className="navbarbg" navbar data-navbarbg="skin5">
           <Nav className="ml-auto float-right" navbar>
-            {/* <NavItem>
-              <a
-                href="link"
-                className="btn btn-danger mr-2"
-                style={{ marginTop: "15px" }}
-              >
-                Upgrade to Pro
-              </a>
-            </NavItem> */}
             {/*--------------------------------------------------------------------------------*/}
             {/* Start Profile Dropdown                                                         */}
             {/*--------------------------------------------------------------------------------*/}
@@ -78,7 +61,7 @@ const Header = () => {
                   className="rounded-circle"
                   width="31"
                 />
-                <span className="ml-2"> Steave</span>
+                <span className="ml-2"> User</span>
               </DropdownToggle>
               <DropdownMenu right className="user-dd">
                 <DropdownItem>
