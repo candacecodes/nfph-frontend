@@ -137,6 +137,7 @@ const Profile = () => {
                           <CardTitle>Organization</CardTitle>
                           <CardSubtitle>{user.organization_id}</CardSubtitle>
                           <input className="btn btn btn-primary btn-lg" type="submit" value="Save Profile"/>
+                          <button className="btn btn btn-danger btn-lg" onClick={() => setEditMode(!editMode)}>Cancel Changes</button>
                         </form>
                     </CardBody>
                   </Card>

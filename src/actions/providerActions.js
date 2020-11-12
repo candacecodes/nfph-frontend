@@ -74,7 +74,7 @@ export function editProviderProfile(formData, id){
             .then(res => res.json())
             .then(json => {
                 if (!json.error) {
-                    dispatch({type: 'UPDATED_PROVIDER', patient: json})
+                    dispatch({type: 'UPDATED_PROVIDER', provider: json})
                 } else {
                     alert(json.error)
                 }

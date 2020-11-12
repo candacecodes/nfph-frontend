@@ -4,6 +4,7 @@ import indexRoutes from "./routes/index.jsx";
 import { Route, Switch } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { handlePatientPersist } from './actions/patientActions';
+import { handleProviderPersist } from './actions/providerActions';
 
 const App = () => {
     // redux hooks
@@ -12,7 +13,9 @@ const App = () => {
     useEffect(()=> {
         if (localStorage.patientToken && localStorage.patientToken != "undefined"){
             dispatch(handlePatientPersist())
-        }}, [])
+        } else if (localStorage.providerToken && localStorage.providerToken != "undefined"){
+            dispatch(handleProviderPersist())
+    }}, [])
 
     return(
         <Switch>

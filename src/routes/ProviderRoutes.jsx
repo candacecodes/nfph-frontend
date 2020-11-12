@@ -1,5 +1,6 @@
 import ProviderAlerts from "../provider-components/dashboard-components/ProviderAlerts.jsx";
 import Dashboard from "../provider-components/Dashboard.jsx";
+import Profile from "../provider-components/Profile.jsx";
 // ui components
 import Alerts from "../views/ui-components/alert.jsx";
 import Badges from "../views/ui-components/badge.jsx";
@@ -22,6 +23,12 @@ var ProviderRoutes = [
     name: "Patient Profile",
     icon: "fas fa-comment-alt",
     component: ProviderAlerts,
+  },
+  {
+    path: "/provider/profile",
+    name: "Provider Profile",
+    icon: " fas fa-user",
+    component: Profile,
   },
   {
     path: "/provider/badge",

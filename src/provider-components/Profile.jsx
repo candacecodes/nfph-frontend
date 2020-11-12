@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { editPatientProfile, deletePatientProfile } from '../actions/patientActions';
+import { editProviderProfile, deleteProviderProfile } from '../actions/providerActions';
 import {
   Card,
   CardBody,
@@ -16,7 +16,7 @@ import img1 from '../assets/images/big/img1.jpg';
 
 const Profile = () => {
   // redux hooks
-  let state = useSelector(state => state.patient.patientInfo)
+  let state = useSelector(state => state.provider.providerInfo)
   const dispatch = useDispatch()
   const history = useHistory();
 
@@ -30,8 +30,9 @@ const Profile = () => {
     first_name: '',
     last_name: '',
     email_address: '',
-    diagnosis: '',
-    prescriptions: [],
+    title: '',
+    field: '',
+    NPI_number: '',
     organization_id: ''
   } });
 
@@ -52,8 +53,8 @@ const Profile = () => {
     first_name: '',
     last_name: '',
     email_address: '',
-    diagnosis: '',
-    prescriptions: [],
+    title: '',
+    field: '',
   })
 
   const handleFormChange = e => {
@@ -66,13 +67,13 @@ const Profile = () => {
   // submit profile change
   const updateProfile = (event) => {
     event.preventDefault();
-    dispatch(editPatientProfile(formData, state.id))
+    dispatch(editProviderProfile(formData, state.id))
     setEditMode(!editMode)
   }
 
   // Doesn't work yet because of foreign key constraints
   const deleteProfile = () => {
-    dispatch(deletePatientProfile(state.id))
+    dispatch(deleteProviderProfile(state.id))
     redirect()
   }
 
@@ -105,10 +106,12 @@ const Profile = () => {
                         <CardSubtitle>{user.first_name + ' ' + user.last_name}</CardSubtitle>
                         <CardTitle>Email</CardTitle>
                         <CardSubtitle>{user.email_address}</CardSubtitle>
-                        <CardTitle>Diagnosis</CardTitle>
-                        <CardSubtitle>{user.diagnosis}</CardSubtitle>
-                        <CardTitle>Prescriptions</CardTitle>
-                        <CardSubtitle>none</CardSubtitle>
+                        <CardTitle>Title</CardTitle>
+                        <CardSubtitle>{user.title}</CardSubtitle>
+                        <CardTitle>Field</CardTitle>
+                        <CardSubtitle>{user.field}</CardSubtitle>
+                        <CardTitle>NPI Number</CardTitle>
+                        <CardSubtitle>{user.NPI_number}</CardSubtitle>
                         <CardTitle>Organization</CardTitle>
                         <CardSubtitle>{user.organization_id}</CardSubtitle>
                         <Button className="btn btn btn-primary btn-lg" onClick={changeToEditMode}>Edit Profile</Button>
@@ -125,18 +128,22 @@ const Profile = () => {
                           <input className="form-control-sm" type="text" name="last_name" defaultValue={formData.last_name} onChange={handleFormChange}/>
                           <CardTitle>Email</CardTitle>
                           <input className="form-control-sm" type="text" name="email_address" defaultValue={formData.email_address} onChange={handleFormChange}/>
-                          <CardTitle>Diagnosis</CardTitle>
-                          <select className="form-control-sm" type="text" name="diagnosis" defaultValue='n/a' onChange={handleFormChange}>
-                            <option value='n/a' disabled>Choose your diagnosis...</option>
-                            <option value='Neurofibromatosis type 1 (NF1)'>Neurofibromatosis type 1 (NF1)</option>
-                            <option value='Neurofibromatosis type 2 (NF2)'>Neurofibromatosis type 2 (NF2)</option>
-                            <option value='Schwannomatosis (SWN)'>Schwannomatosis (SWN)</option>
+                          <CardTitle>Title</CardTitle>
+                          <select className="form-control-sm" type="text" name="title" defaultValue='n/a' onChange={handleFormChange}>
+                            <option value='n/a' disabled>Choose your Title...</option>
+                            <option value='Nurse Practitioner (NP)'>Nurse Practitioner (NP)</option>
+                            <option value='Medical Doctor (MD)'>Medical Doctor (MD)</option>
+                            <option value='Physician Assistant (PA)'>Physician Assistant (PA)</option>
+                            <option value='Registered Nurse (RN)'>Registered Nurse (RN)</option>
                           </select>
-                          <CardTitle>Prescriptions</CardTitle>
-                          <CardSubtitle>none</CardSubtitle>
+                          <CardTitle>Specialty</CardTitle>
+                          <input className="form-control-sm" type="text" name="field" defaultValue={formData.field} onChange={handleFormChange}/>
+                          <CardTitle>NPI Number</CardTitle>
+                          <CardSubtitle>{user.NPI_number}</CardSubtitle>
                           <CardTitle>Organization</CardTitle>
                           <CardSubtitle>{user.organization_id}</CardSubtitle>
                           <input className="btn btn btn-primary btn-lg" type="submit" value="Save Profile"/>
+                          <button className="btn btn btn-danger btn-lg" onClick={() => setEditMode(!editMode)}>Cancel Changes</button>
                         </form>
                     </CardBody>
                   </Card>
