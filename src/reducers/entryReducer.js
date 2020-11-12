@@ -1,6 +1,7 @@
 const initialState = {
     allEntries: [],
-    editEntryMode: false
+    editEntryMode: false,
+    currentEntry: 0
 }
 
 const entryReducer = (state=initialState,action) => {
@@ -11,7 +12,8 @@ const entryReducer = (state=initialState,action) => {
             return {
                 ...state,
                 allEntries: [state.allEntries.concat(action.entry)],
-                editEntryMode: false
+                editEntryMode: false,
+                currentEntry: 0
             }
 
         case 'PATCH_ENTRY':
@@ -21,14 +23,16 @@ const entryReducer = (state=initialState,action) => {
             return {
                 ...state,
                 allEntries: [updatedEntries.concat(action.entry)],
-                editEntryMode: false
+                editEntryMode: false,
+                currentEntry: 0
             }
 
         case 'FETCH_ENTRIES':
             return {
                 ...state,
                 allEntries: [action.entries],
-                editEntryMode: false
+                editEntryMode: false,
+                currentEntry: 0
             }
 
         case 'DELETE_ENTRY':
@@ -38,15 +42,17 @@ const entryReducer = (state=initialState,action) => {
             return {
                 ...state,
                 allEntries: [remainingEntries],
-                editEntryMode: false
+                editEntryMode: false,
+                currentEntry: 0
             }
 
         case 'ENTER_EDIT_ENTRY_MODE':
-
+            
             return {
                 ...state,
                 allEntries: [...state.allEntries],
-                editEntryMode: true
+                editEntryMode: true,
+                currentEntry: action.entryId
             }
 
         default:

@@ -1,4 +1,4 @@
-export const patchEntry = (event) => {
+export const patchEntry = (event, currentEntry) => {
 
     let data = {
         patient_id: 1,
@@ -12,8 +12,7 @@ export const patchEntry = (event) => {
     }
 
     return (dispatch) => {
-        // fetch(`http://localhost:3000/entries/${event.target.value}`,{
-        fetch("http://localhost:3000/entries/3",{
+        fetch(`http://localhost:3000/entries/${currentEntry}`,{
             method:"PATCH",
             headers:{
                 'Content-Type':'application/json'
