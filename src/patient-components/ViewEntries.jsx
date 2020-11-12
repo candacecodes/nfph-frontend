@@ -73,7 +73,7 @@ const ViewEntries = () => {
   const createEntryCards = () => {
 
       return allEntries.map(entry => {
-
+        const entryToggler = 'comment' + entry.id
         return (
           <Row>
             <Col>
@@ -89,12 +89,12 @@ const ViewEntries = () => {
                   <CardTitle>Symptoms</CardTitle>
                   <CardText>{entry.symptoms}</CardText>
                   <CardText>
-                    <small className="text-muted">3 comments</small>
+                    <small className="text-muted">2 comments</small>
                   </CardText>
-                  <Button id="changeThis1">View Comments</Button>
+                  <Button id={entryToggler}>View Comments</Button>
                   <Button value={entry.id} onClick={(event => editEntry(event))} >Edit Entry</Button>
                   <Button value={entry.id} onClick={(event => deleteOneEntry(event))}>Delete Entry</Button>
-                  <UncontrolledCollapse toggler="#changeThis1">
+                  <UncontrolledCollapse toggler={entryToggler}>
                     <Card>
                       <CardBody>
                         <CardTitle>July 15, 2020</CardTitle>
