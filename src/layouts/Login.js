@@ -2,7 +2,8 @@ import React, {useState, useEffect} from "react";
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllOrganizations } from '../actions/organizationActions';
-import { createPatientProfile, patientLogin, handlePersist } from '../actions/patientActions';
+import { createPatientProfile, patientLogin, handlePatientPersist } from '../actions/patientActions';
+import { createProviderProfile, providerLogin, handleProviderPersist } from '../actions/providerActions';
 import uuid from 'react-uuid';
 import '../assets/scss/login-signup.css'
 
@@ -13,9 +14,14 @@ const Login = () => {
 
   // redirects
   const history = useHistory();
-  if (localStorage.token && localStorage.token != "undefined"){
-    dispatch(handlePersist())
+  if (localStorage.patientToken && localStorage.patientToken != "undefined"){
+    dispatch(handlePatientPersist())
     history.push('/patient')
+  }
+
+  if (localStorage.providerToken && localStorage.providerToken != "undefined"){
+    dispatch(handleProviderPersist())
+    history.push('/provider')
   }
 
   // useEffect
@@ -105,7 +111,7 @@ const Login = () => {
         NPI_number: npiNumber,
         provider_uuid: uuid()
       }
-      // add create a provider
+      dispatch(createProviderProfile(formData))
     }
   }
 
@@ -117,7 +123,7 @@ const Login = () => {
       password: loginPassword,
     }
     if (providerPage) {
-      // add provider login
+      dispatch(providerLogin(formData))
     } else {
       dispatch(patientLogin(formData))
     }
