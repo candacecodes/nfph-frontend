@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
     organizations: organizationReducer,
     entryReducer: entryReducer,
     provider: providerReducer,
-    comment: commentReducer,
+    comments: commentReducer,
 });
 
 export default rootReducer;

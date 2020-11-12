@@ -3,17 +3,10 @@ export const getComments = id => {
     try {
       const res = await fetch(`http://localhost:3000/entries/${id}`)
       const data = await res.json()
-      let comments
-      let number
-      if (data.comments) {
-        comments = data.comments
-        number = data.comments.length
-      } else {
-        comments = []
-        number = 0
-      }
+      const comments = data.comments
+      const number = 1
       // debugger
-      dispatch({type: 'LOAD_COMMENT', comments: comments, numberComments: number})
+      dispatch({type: 'LOAD_COMMENT', allComments: comments, numberComments: number})
     } catch (err) {
       console.log('Error retrieving comments:', err)
     }
@@ -32,7 +25,7 @@ export const editComment = id => {
       })
       const comment = await res.json()
 
-      dispatch({type: 'PATCH_COMMENT', comment: comment, numberComments: number})
+      dispatch({type: 'PATCH_COMMENT', comment: comment})
     } catch (err) {
       console.log('Error editing comments:', err)
     }

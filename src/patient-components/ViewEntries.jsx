@@ -25,8 +25,8 @@ import { enterEditEntryMode } from "../actions/enterEditEntryMode";
 const ViewEntries = () => {
 
   const allEntries = useSelector(state => state.entryReducer.allEntries[0])
-  // const comments = useSelector(state => state.commentReducer.numberComments)
   const comments = 1
+  const [isOpen, setIsOpen] = useState(false)
 
   // Fetches all entries when the user goes to view all entries
 
@@ -48,6 +48,16 @@ const ViewEntries = () => {
   const editEntry = (event) => {
     dispatch(enterEditEntryMode(event));
     redirect(event)
+  }
+
+  const toggle = (entryId) => {
+    // dispatch(getComments(entryId))
+    setIsOpen(!isOpen)
+  }
+
+  const viewCommentsByEntry = (entryId) => {
+    // dispatch(getComments(entryId))
+    return <ViewComment entryId={entryId} />
   }
 
   
@@ -79,14 +89,7 @@ const ViewEntries = () => {
       return allEntries.map(entry => {
         const entryToggler = 'comment' + entry.id
         const entryId = entry.id
-
-        const comments = useSelector(state => state.commentReducer.comments)
-      
-        const viewCommentsByEntry = (entryId) => {
-          dispatch(getComments(entryId))
-          return <ViewComment />
-        }
-      
+    
         return (
           <Row>
             <Col>
@@ -104,11 +107,11 @@ const ViewEntries = () => {
                   <CardText>
                     <small className="text-muted">{comments} comments</small>
                   </CardText>
-                  <Button id={entryToggler}>View Comments</Button>
+                  <Button id={entryToggler} isOpen={isOpen} onClick={() => toggle(entryId)}>View Comments</Button>
                   <Button value={entry.id} onClick={(event => editEntry(event))} >Edit Entry</Button>
                   <Button value={entry.id} onClick={(event => deleteOneEntry(event))}>Delete Entry</Button>
                   <UncontrolledCollapse toggler={entryToggler}>
-                    { comments > 0 ? viewCommentsByEntry(entryId) : null }
+                    { isOpen ? viewCommentsByEntry(entryId) : null }
                     <Form>
                       <FormGroup>
                         <Label for="exampleText">Add Comment</Label>
