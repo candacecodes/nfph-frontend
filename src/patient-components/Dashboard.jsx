@@ -3,25 +3,19 @@ import { useHistory } from 'react-router-dom';
 import {
   Card,
   CardImg,
-  // CardText,
   CardBody,
   CardTitle,
-  // CardSubtitle,
   Button,
   Row,
   Col,
 } from "reactstrap";
-// import {
-//   ProductYearlySales,
-//   RecentSales,
-//   ChatListing,
-//   ProgressCards,
-//   RecentComments,
-// } from "./dashboard-components";
 
-import img1 from "../assets/images/big/img1.jpg";
-import img2 from "../assets/images/big/img2.jpg";
-import img3 from "../assets/images/big/img3.jpg";
+import calendar from "../assets/images/pictures/calendar.png";
+import newEntry from "../assets/images/pictures/entry.png";
+import profile from "../assets/images/pictures/profile.png";
+import providers from "../assets/images/pictures/providers.png";
+import stats from "../assets/images/pictures/stats.png";
+import viewEntries from "../assets/images/pictures/view-entries.png";
 
 const Dashboard = () => {
 
@@ -34,39 +28,15 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Patient Dashboard</h1>
-      {/* <ProgressCards /> */}
-      {/* <Row>
-        <Col lg={12}>
-          <ProductYearlySales />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={12}>
-          <RecentSales />
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={8}>
-          <RecentComments />
-        </Col>
-        <Col sm={12} lg={4}>
-          <ChatListing />
-        </Col>
-      </Row> */}
       <Row>
         <Col xs="12" md="4">
           {/*--------------------------------------------------------------------------------*/}
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
           <Card>
-            <CardImg top width="100%" src={img1} />
+            <CardImg top width="100%" src={calendar} />
             <CardBody>
               <CardTitle>Calendar</CardTitle>
-              {/* <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </CardText> */}
               <Button>View Calendar</Button>
             </CardBody>
           </Card>
@@ -76,14 +46,9 @@ const Dashboard = () => {
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
           <Card>
-            <CardImg top width="100%" src={img2} />
+            <CardImg top width="100%" src={newEntry} />
             <CardBody>
               <CardTitle>New Entry</CardTitle>
-              {/* <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </CardText> */}
               <Button name="newentry" onClick={(event) => redirect(event)}>Create New Entry</Button>
             </CardBody>
           </Card>
@@ -93,14 +58,9 @@ const Dashboard = () => {
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
           <Card>
-            <CardImg top width="100%" src={img3} />
+            <CardImg top width="100%" src={profile} />
             <CardBody>
               <CardTitle>Profile</CardTitle>
-              {/* <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </CardText> */}
               <Button name="profile" onClick={(event) => redirect(event)}>View Profile</Button>
             </CardBody>
           </Card>
@@ -110,14 +70,9 @@ const Dashboard = () => {
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
           <Card>
-            <CardImg top width="100%" src={img2} />
+            <CardImg top width="100%" src={stats} />
             <CardBody>
               <CardTitle>Statistics</CardTitle>
-              {/* <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </CardText> */}
               <Button>View Statistics</Button>
             </CardBody>
           </Card>
@@ -127,14 +82,9 @@ const Dashboard = () => {
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
           <Card>
-            <CardImg top width="100%" src={img2} />
+            <CardImg top width="100%" src={viewEntries} />
             <CardBody>
               <CardTitle>Entries</CardTitle>
-              {/* <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </CardText> */}
               <Button name="allentries" onClick={(event) => redirect(event)}>View Entries</Button>
             </CardBody>
           </Card>
@@ -144,14 +94,9 @@ const Dashboard = () => {
           {/*Card-1*/}
           {/*--------------------------------------------------------------------------------*/}
           <Card>
-            <CardImg top width="100%" src={img2} />
+            <CardImg top width="100%" src={providers} />
             <CardBody>
               <CardTitle>Providers</CardTitle>
-              {/* <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </CardText> */}
               <Button>View All Providers</Button>
             </CardBody>
           </Card>

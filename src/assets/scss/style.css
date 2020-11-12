@@ -126,6 +126,10 @@ html {
     width: device-width;
 }
 
+#nf-logo {
+    height: 100px important!;
+}
+
 article,
 aside,
 figcaption,
@@ -12662,6 +12666,7 @@ Preloader
 #main-wrapper[data-layout='vertical'] .topbar .top-navbar .navbar-header[data-logobg='skin6'] .navbar-brand .dark-logo,
 #main-wrapper[data-layout='horizontal'] .topbar .top-navbar .navbar-header[data-logobg='skin6'] .navbar-brand .dark-logo {
     display: inline;
+    width: 5%;
 }
 
 #main-wrapper[data-layout='vertical'] .topbar .top-navbar .navbar-header[data-logobg='skin6'] .navbar-brand .light-logo,
@@ -13169,6 +13174,7 @@ Preloader
 .topbar .top-navbar .navbar-header .navbar-brand .logo-icon {
     margin-right: 5px;
 }
+
 
 .topbar .top-navbar .navbar-nav>.nav-item>.nav-link {
     padding: 0px 15px;

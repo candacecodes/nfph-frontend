@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { postEntry } from "../actions/postEntry";
 import { patchEntry } from "../actions/patchEntry";
+import { enterEditEntryMode } from "../actions/enterEditEntryMode";
 import {
   Card,
   CardBody,
   CardTitle
 } from 'reactstrap';
-import { enterEditEntryMode } from "../actions/enterEditEntryMode";
-
-// Change header to say new entry or update entry based on what the user is doing
-// Need to fetch the entry details using the id which will be passed from the view all entries page
 
 const NewEntry = () => {
 
@@ -19,12 +16,12 @@ const NewEntry = () => {
 
   const [date, setDate] = useState('');
   const [issue, setIssue] = useState('');
-  // const [provider, setProvider] = useState(''); I don't know if we want people to be able to change their providers?
   const [location, setLocation] = useState('');
   const [painLevel, setPainLevel] = useState('');
   const [comments, setComments] = useState('');
   
   const editEntryMode = useSelector(state => state.entryReducer.editEntryMode)
+  const currentEntry = useSelector(state => state.entryReducer.currentEntry)
 
   // Takes user to patient dashboard once their entry has been posted
   
@@ -41,11 +38,13 @@ const NewEntry = () => {
   const submitForm = (event) => {
 
     event.preventDefault();
+
     if (editEntryMode) {
-      dispatch(patchEntry(event));
+      dispatch(patchEntry(event, currentEntry));
     } else {
       dispatch(postEntry(event));
     }
+
     redirect(event);
 
   }
@@ -65,7 +64,7 @@ const NewEntry = () => {
 
           <h4 className="col-form-label-lg">Date</h4>
           <h6 className="card-subtitle">Select the date on which the symptom occurred:</h6>
-          <input type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)}/>
+          <input className="form-control-lg" type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)}/>
 
           <br></br>
           <br></br>
@@ -76,13 +75,6 @@ const NewEntry = () => {
 
           <br></br>
           <br></br>
-
-          {/* <h4 className="col-form-label-lg">Provider</h4>
-          <h6 className="card-subtitle">Select your provider:</h6>
-          <input className="form-control-lg" type="text" name="provider" value={provider} onChange={(event) => setProvider(event.target.value)}/>
-
-          <br></br>
-          <br></br> */}
 
           <h4 className="col-form-label-lg">Location</h4>
           <h6 className="card-subtitle">Which part of the body does this symptom relate to?</h6>
