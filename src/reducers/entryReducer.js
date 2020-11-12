@@ -1,7 +1,8 @@
 const initialState = {
     allEntries: [],
     editEntryMode: false,
-    currentEntry: 0
+    currentEntry: "",
+    currentEntry: {}
 }
 
 const entryReducer = (state=initialState,action) => {
@@ -13,7 +14,8 @@ const entryReducer = (state=initialState,action) => {
                 ...state,
                 allEntries: [state.allEntries.concat(action.entry)],
                 editEntryMode: false,
-                currentEntry: 0
+                currentEntryId: "",
+                currentEntry: {}
             }
 
         case 'PATCH_ENTRY':
@@ -24,15 +26,36 @@ const entryReducer = (state=initialState,action) => {
                 ...state,
                 allEntries: [updatedEntries.concat(action.entry)],
                 editEntryMode: false,
-                currentEntry: 0
+                currentEntryId: "",
+                currentEntry: {}
             }
 
-        case 'FETCH_ENTRIES':
+            case 'FETCH_ENTRY':
+
+                let date = action.entry.date_of_entry.slice(0,10)
+
+                return {
+                    ...state,
+                    allEntries: [...state.allEntries],
+                    editEntryMode: state.editEntryMode,
+                    currentEntryId: state.currentEntryId,
+                    currentEntry: {
+                        entry: action.entry,
+                        date: date,
+                        issue: action.entry.issue,
+                        painLevel: action.entry.pain_level,
+                        location: action.entry.location,
+                        comments: action.entry.symptoms
+                    }
+                }
+        
+            case 'FETCH_ENTRIES':
             return {
                 ...state,
                 allEntries: [action.entries],
                 editEntryMode: false,
-                currentEntry: 0
+                currentEntryId: "",
+                currentEntry: {}
             }
 
         case 'DELETE_ENTRY':
@@ -43,7 +66,8 @@ const entryReducer = (state=initialState,action) => {
                 ...state,
                 allEntries: [remainingEntries],
                 editEntryMode: false,
-                currentEntry: 0
+                currentEntryId: "",
+                currentEntry: {}
             }
 
         case 'ENTER_EDIT_ENTRY_MODE':
@@ -52,7 +76,8 @@ const entryReducer = (state=initialState,action) => {
                 ...state,
                 allEntries: [...state.allEntries],
                 editEntryMode: true,
-                currentEntry: action.entryId
+                currentEntryId: action.entryId,
+                currentEntry: {}
             }
 
         default:

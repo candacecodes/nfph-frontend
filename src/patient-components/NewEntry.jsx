@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { postEntry } from "../actions/postEntry";
 import { patchEntry } from "../actions/patchEntry";
-import { enterEditEntryMode } from "../actions/enterEditEntryMode";
+import { fetchEntry } from "../actions/fetchEntry";
 import {
   Card,
   CardBody,
@@ -12,16 +12,32 @@ import {
 
 const NewEntry = () => {
 
+  const editEntryMode = useSelector(state => state.entryReducer.editEntryMode)
+  const currentEntryId = useSelector(state => state.entryReducer.currentEntryId)
+  const currentEntry = useSelector(state => state.entryReducer.currentEntry)
+
   // Sets up state for controlled add/edit entry form
 
-  const [date, setDate] = useState('');
-  const [issue, setIssue] = useState('');
+  const [date, setDate] = useState(currentEntry.date);
+  const [issue, setIssue] = useState(currentEntry.issue);
   const [location, setLocation] = useState('');
   const [painLevel, setPainLevel] = useState('');
   const [comments, setComments] = useState('');
   
-  const editEntryMode = useSelector(state => state.entryReducer.editEntryMode)
-  const currentEntry = useSelector(state => state.entryReducer.currentEntry)
+
+  // Fetches entry for editing
+
+  useEffect(() => {
+    fetchCurrentEntry(currentEntryId);
+  }, []);
+
+  const dispatch = useDispatch();
+
+  const fetchCurrentEntry = () => {
+      if (currentEntryId !== "" && currentEntryId) {
+        dispatch(fetchEntry(currentEntryId))
+      }
+  }
 
   // Takes user to patient dashboard once their entry has been posted
   
@@ -33,14 +49,12 @@ const NewEntry = () => {
 
   // Submits form
 
-  const dispatch = useDispatch();
-
   const submitForm = (event) => {
 
     event.preventDefault();
 
     if (editEntryMode) {
-      dispatch(patchEntry(event, currentEntry));
+      dispatch(patchEntry(event, currentEntryId));
     } else {
       dispatch(postEntry(event));
     }
@@ -48,7 +62,6 @@ const NewEntry = () => {
     redirect(event);
 
   }
-
 
   return (
 
