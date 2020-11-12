@@ -60,8 +60,8 @@ const Sidebar = (props) => {
                 );
               }
             })}
-            <a href="/" className="btn btn-danger btn-block mt-3 mx-3">
-              Upgrade To Pro
+            <a href="/" className="btn btn-danger btn-block mt-3 mx-3" onClick={()=>localStorage.clear()}>
+              Logout
             </a>
           </Nav>
         </PerfectScrollbar>

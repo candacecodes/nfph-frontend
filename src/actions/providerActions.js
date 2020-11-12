@@ -1,7 +1,7 @@
-export function createPatientProfile(formData){
+export function createProviderProfile(formData){
     return (dispatch) => {
-        dispatch({type: 'LOADING_PATIENT_PROFILE'})
-        fetch(`http://localhost:3000/patients`, {
+        dispatch({type: 'LOADING_PROVIDER_PROFILE'})
+        fetch(`http://localhost:3000/providers`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -12,8 +12,8 @@ export function createPatientProfile(formData){
             .then(res => res.json())
             .then(json => {
                 if (!json.error) {
-                    localStorage.patientToken = json.token
-                    dispatch({type: 'PATIENT_LOGGED_IN', patient: json.patient, token: json.token})
+                    localStorage.providerToken = json.token
+                    dispatch({type: 'PROVIDER_LOGGED_IN', provider: json.provider, token: json.token})
                 } else {
                     alert(json.error)
                 }
@@ -21,10 +21,10 @@ export function createPatientProfile(formData){
     }
 }
 
-export function patientLogin(formData){
+export function providerLogin(formData){
     return (dispatch) => {
-        dispatch({type: 'LOADING_PATIENT_PROFILE'})
-        fetch(`http://localhost:3000/patient-login`, {
+        dispatch({type: 'LOADING_PROVIDER_PROFILE'})
+        fetch(`http://localhost:3000/provider-login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,8 +35,8 @@ export function patientLogin(formData){
             .then(res => res.json())
             .then(json => {
                 if (!json.error) {
-                    localStorage.patientToken = json.token
-                    dispatch({type: 'PATIENT_LOGGED_IN', patient: json.patient, token: json.token})
+                    localStorage.providerToken = json.token
+                    dispatch({type: 'PROVIDER_LOGGED_IN', provider: json.provider, token: json.token})
                 } else {
                     alert(json.error)
                 }
@@ -44,26 +44,26 @@ export function patientLogin(formData){
     }
 }
 
-export function handlePatientPersist(){
+export function handleProviderPersist(){
     return (dispatch) => {
-        dispatch({type: 'LOADING_PATIENT_PROFILE'})
-            fetch('http://localhost:3000/patient-persist',{
+        dispatch({type: 'LOADING_PROVIDER_PROFILE'})
+            fetch('http://localhost:3000/provider-persist',{
                 headers: {
-                "Authorization": `Bearer ${localStorage.patientToken}`
+                "Authorization": `Bearer ${localStorage.providerToken}`
                 }
         })
         .then(res => res.json())
         .then(json => {
-            localStorage.patientToken = json.token
-            dispatch({type: 'PATIENT_LOGGED_IN', patient: json.patient, token: json.token})
+            localStorage.providerToken = json.token
+            dispatch({type: 'PROVIDER_LOGGED_IN', provider: json.provider, token: json.token})
         })
     }
 }
 
-export function editPatientProfile(formData, id){
+export function editProviderProfile(formData, id){
     return (dispatch) => {
-        dispatch({type: 'LOADING_PATIENT_PROFILE'})
-        fetch(`http://localhost:3000/patients/${id}`, {
+        dispatch({type: 'LOADING_PROVIDER_PROFILE'})
+        fetch(`http://localhost:3000/providers/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export function editPatientProfile(formData, id){
             .then(res => res.json())
             .then(json => {
                 if (!json.error) {
-                    dispatch({type: 'UPDATED_PATIENT', patient: json})
+                    dispatch({type: 'UPDATED_PROVIDER', patient: json})
                 } else {
                     alert(json.error)
                 }
@@ -82,15 +82,15 @@ export function editPatientProfile(formData, id){
     }
 }
 
-export function deletePatientProfile(id){
+export function deleteProviderProfile(id){
     return (dispatch) => {
         dispatch({type: 'LOADING_PATIENT_PROFILE'})
-        fetch(`http://localhost:3000/patients/${id}`, {
+        fetch(`http://localhost:3000/providers/${id}`, {
             method: 'DELETE'
         })
         .then(json => {
             if (!json.error) {
-                dispatch({ type: 'DELETE_PATIENT' })
+                dispatch({ type: 'DELETE_PROVIDER' })
             } else {
                 alert(json.error)
             }
