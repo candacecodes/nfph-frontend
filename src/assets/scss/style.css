@@ -127,6 +127,7 @@ html {
 }
 
 #nf-logo {
+    position: absolute;
     height: 100px important!;
 }
 
