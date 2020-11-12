@@ -64,7 +64,7 @@ const NewEntry = () => {
 
           <h4 className="col-form-label-lg">Date</h4>
           <h6 className="card-subtitle">Select the date on which the symptom occurred:</h6>
-          <input type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)}/>
+          <input className="form-control-lg" type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)}/>
 
           <br></br>
           <br></br>

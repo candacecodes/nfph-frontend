@@ -8,11 +8,10 @@ import {
   CardImg,
   CardTitle,
   CardSubtitle,
-//   CardText,
   Button
 } from 'reactstrap';
 
-import img1 from '../assets/images/big/img1.jpg';
+import profilePicture from '../assets/images/pictures/profile-picture.png';
 
 const Profile = () => {
   // redux hooks
@@ -87,7 +86,7 @@ const Profile = () => {
               <div className="col-lg-4 col-xlg-3 col-md-12">
                   <div className="white-box">
                       <div className="user-bg">
-                          <CardImg width="100%" src={img1} />
+                          <CardImg width="100%" src={profilePicture} />
                               <div className="overlay-box">
                                   <div className="user-content">
                                       <h4 className="mt-2">{user.first_name} {user.last_name}</h4>

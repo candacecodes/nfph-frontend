@@ -38,12 +38,12 @@ const ViewEntries = () => {
 
   const deleteOneEntry = (event) => {
       dispatch(deleteEntry(event));
-      dispatch(fetchEntries());
+      window.location.reload(false);
   }
 
   const editEntry = (event) => {
     dispatch(enterEditEntryMode(event));
-    redirect(event)
+    redirect();
   }
 
   
