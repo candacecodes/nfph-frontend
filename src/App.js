@@ -3,16 +3,19 @@ import Login from "./layouts/Login.js"
 import indexRoutes from "./routes/index.jsx";
 import { Route, Switch } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { handlePersist } from './actions/patientActions';
+import { handlePatientPersist } from './actions/patientActions';
+import { handleProviderPersist } from './actions/providerActions';
 
 const App = () => {
     // redux hooks
     const dispatch = useDispatch()
 
     useEffect(()=> {
-        if (localStorage.token && localStorage.token != "undefined"){
-            dispatch(handlePersist())
-        }}, [])
+        if (localStorage.patientToken && localStorage.patientToken != "undefined"){
+            dispatch(handlePatientPersist())
+        } else if (localStorage.providerToken && localStorage.providerToken != "undefined"){
+            dispatch(handleProviderPersist())
+    }}, [])
 
     return(
         <Switch>
