@@ -57,10 +57,6 @@ npm start               # to open the app in your browser
 </ul>
 
 
-<br>
-
-<br>
-
 ### Providers Can:
 <ul>
     <li>Sign up or log in.</li>
@@ -68,9 +64,6 @@ npm start               # to open the app in your browser
     <li>Add comments to patient entries.</li>
 </ul>
 
-<br>
-
-<br>
 
 
 ## Developers
