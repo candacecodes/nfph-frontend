@@ -61,7 +61,7 @@ const Header = () => {
                   className="rounded-circle"
                   width="31"
                 />
-                <span className="ml-2"> User</span>
+                <span className="ml-2"> Iona</span>
               </DropdownToggle>
               <DropdownMenu right className="user-dd">
                 <DropdownItem>
