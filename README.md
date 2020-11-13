@@ -17,7 +17,7 @@ We built an app specific to NF symptom tracking, with a built-in hearing test, s
 ### Result
 Users now have a personalized entry-logging system and more autonomy over tracking their hearing progression and other symptoms.
 
-**To see the full demo, click [here]().**
+**To see the full demo, click [here](https://youtu.be/4suu2q9dEh0).**
 
 
 ## Installation
