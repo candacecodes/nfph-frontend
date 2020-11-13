@@ -65,6 +65,17 @@ npm start               # to open the app in your browser
 </ul>
 
 
+## Future Scope
+
+ [ ] Patient opt-in option to share their data with researchers
+ 
+ [ ] Researcher portal + statistics analytics
+ 
+ [ ] Quick chat feature
+ 
+ [ ] Calendar showing provider availability and appointment booking option
+ 
+ 
 
 ## Developers
 
